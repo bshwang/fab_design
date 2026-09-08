@@ -16,12 +16,15 @@ Blender에서 일관된 스타일의 반도체 FAB 인포그래픽을 조립하�
 
 모델·재질·템플릿이 ZIP에 포함되어 있습니다. 추가 Python 패키지나 네트워크 연결 없이 실행합니다. GitHub의 **Code → Download ZIP**은 저장소 전체를 받는 기능입니다. Blender에 직접 설치할 파일은 위의 애드온 ZIP입니다.
 
-- [상세 사용법](docs/QUICKSTART_KO.md)
+- [스크린샷 사용자 매뉴얼 HTML 다운로드](https://github.com/bshwang/fab_design/raw/refs/heads/main/dist/FAB_Scene_Kit_User_Manual_0.3.0_KO.html)
+- [빠른 사용법](docs/QUICKSTART_KO.md)
 - [전체 HTML 카탈로그 다운로드](https://github.com/bshwang/fab_design/raw/refs/heads/main/dist/FAB_Scene_Kit_Asset_Catalog_0.3.0.html)
 - [다운로드 파일 SHA-256](dist/SHA256SUMS.txt)
 - [버전 변경 사항](CHANGELOG.md)
 
 HTML 카탈로그는 **다운로드 후 브라우저에서 여세요**. 이미지가 내장된 단일 파일이며, 검색·분류·상세 보기·선택 목록 CSV·인쇄/PDF 기능을 제공합니다. GitHub 파일 화면에서는 HTML 코드가 표시됩니다.
+
+사용자 매뉴얼도 이미지가 내장된 단일 HTML입니다. 실제 Blender 화면 11장과 렌더 3장을 포함하고, 설치 → 템플릿 → 검사 셀 조립 → Cleanroom 편집 → 사람 포즈 교체 → 라벨·OHT → PNG·`.blend` 저장을 설명합니다. 화면 확대, 목차 검색, 실습 체크리스트를 제공합니다. **다운로드한 HTML 파일 하나만** 옮기면 오프라인에서 본문과 그림을 읽을 수 있습니다.
 
 ## 포함 기능
 
@@ -54,7 +57,7 @@ HTML 카탈로그는 **다운로드 후 브라우저에서 여세요**. 이미�
 
 ```text
 addon/fab_scene_kit/   설치 패키지와 일치하는 소스·모델·템플릿
-dist/                 설치 ZIP·완성 HTML 카탈로그·체크섬
+dist/                 설치 ZIP·HTML 카탈로그·화면 매뉴얼·체크섬
 docs/                 사용법·장면 예시·검증 범위
 tools/                패키지 재생성·무결성 검사
 ```

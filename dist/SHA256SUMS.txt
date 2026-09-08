@@ -1,2 +1,3 @@
 9446b87a57cee1b570129150ad4bbfba581a6c0e32f7c9fdc2e03705858b2482  fab_scene_kit-0.3.0.zip
 ebb5c1ae2d9444ac5a27887e6166c8ce1468b03d92d6742668b6336d14e5e128  FAB_Scene_Kit_Asset_Catalog_0.3.0.html
+afcb622334e3ad8d0ebda5776381ce8e6d0e9c145e73359c929b90b765594e93  FAB_Scene_Kit_User_Manual_0.3.0_KO.html

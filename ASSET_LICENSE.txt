@@ -1,0 +1,22 @@
+FAB Scene Kit — asset provenance
+
+The library contains generic, original project-authored models.
+The fifteen original equipment/utility models were extracted and
+normalized from the project's preserved fab_manufacturing_i04 scene.
+Robots, OHT modules, and additional props were authored for this kit.
+Version 0.3.0 replaces the two original people with adult-proportioned
+human models, adds four human poses, and adds nine generic lab assets.
+Two user-provided stock illustration references informed generic
+equipment concepts and work poses. Their raster images, watermarks,
+logos and layouts are not included in this package. No license to the
+reference illustrations is granted or implied by this asset package.
+No downloaded third-party models, textures, commercial add-ons, fonts,
+proprietary CAD files, or manufacturer logos are bundled.
+
+The project owner may use and modify these assets and rendered outputs
+in their projects, including internal commercial presentations.
+Bundling the assets with GPL-licensed add-on code does not by itself
+apply that code license to the assets or to the user's render outputs.
+
+The equipment is illustrative, not an engineering model or a certified
+representation of any manufacturer's product.

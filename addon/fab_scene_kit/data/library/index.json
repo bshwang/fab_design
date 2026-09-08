@@ -1,0 +1,733 @@
+{
+  "version": "0.3.0",
+  "assets": {
+    "lithography": {
+      "name": "Lithography",
+      "category": "PROCESS",
+      "collection": "FAB_lithography",
+      "file": "fab_assets.blend",
+      "size": [
+        4.29,
+        3.0,
+        3.1525
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "etch": {
+      "name": "Etch",
+      "category": "PROCESS",
+      "collection": "FAB_etch",
+      "file": "fab_assets.blend",
+      "size": [
+        3.2473,
+        3.64,
+        1.8975
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "deposition": {
+      "name": "Deposition",
+      "category": "PROCESS",
+      "collection": "FAB_deposition",
+      "file": "fab_assets.blend",
+      "size": [
+        3.52,
+        2.845,
+        1.814
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "inspection": {
+      "name": "Inspection",
+      "category": "PROCESS",
+      "collection": "FAB_inspection",
+      "file": "fab_assets.blend",
+      "size": [
+        3.42,
+        2.08,
+        2.7225
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "testing": {
+      "name": "Testing",
+      "category": "PROCESS",
+      "collection": "FAB_testing",
+      "file": "fab_assets.blend",
+      "size": [
+        3.96,
+        2.4149,
+        2.14
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "hvac": {
+      "name": "HVAC",
+      "category": "UTILITY",
+      "collection": "FAB_hvac",
+      "file": "fab_assets.blend",
+      "size": [
+        5.405,
+        2.79,
+        3.765
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "chiller": {
+      "name": "Chiller",
+      "category": "UTILITY",
+      "collection": "FAB_chiller",
+      "file": "fab_assets.blend",
+      "size": [
+        4.7,
+        2.885,
+        1.5725
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "upw": {
+      "name": "UPW",
+      "category": "UTILITY",
+      "collection": "FAB_upw",
+      "file": "fab_assets.blend",
+      "size": [
+        3.522,
+        2.565,
+        2.512
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "wastewater_treatment": {
+      "name": "Wastewater treatment",
+      "category": "UTILITY",
+      "collection": "FAB_wastewater_treatment",
+      "file": "fab_assets.blend",
+      "size": [
+        5.635,
+        1.5835,
+        1.355
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "scrubber": {
+      "name": "Scrubber",
+      "category": "UTILITY",
+      "collection": "FAB_scrubber",
+      "file": "fab_assets.blend",
+      "size": [
+        3.437,
+        1.8116,
+        3.76
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "bulk_gas": {
+      "name": "Bulk gas",
+      "category": "UTILITY",
+      "collection": "FAB_bulk_gas",
+      "file": "fab_assets.blend",
+      "size": [
+        3.584,
+        2.312,
+        3.421
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "gas_cabinet": {
+      "name": "Gas cabinet",
+      "category": "UTILITY",
+      "collection": "FAB_gas_cabinet",
+      "file": "fab_assets.blend",
+      "size": [
+        3.36,
+        1.622,
+        2.9725
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "chemical_supply": {
+      "name": "Chemical supply",
+      "category": "UTILITY",
+      "collection": "FAB_chemical_supply",
+      "file": "fab_assets.blend",
+      "size": [
+        3.43,
+        2.78,
+        2.209
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "electrical": {
+      "name": "Electrical",
+      "category": "UTILITY",
+      "collection": "FAB_electrical",
+      "file": "fab_assets.blend",
+      "size": [
+        2.66,
+        2.435,
+        2.02
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "control_room": {
+      "name": "Control room",
+      "category": "UTILITY",
+      "collection": "FAB_control_room",
+      "file": "fab_assets.blend",
+      "size": [
+        6.83,
+        3.7,
+        1.5
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "cleanroom": {
+      "name": "Cleanroom cutaway",
+      "category": "SPACE",
+      "collection": "FAB_cleanroom",
+      "file": "fab_assets.blend",
+      "size": [
+        15.3,
+        11.3,
+        4.325
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "cart": {
+      "name": "FOUP cart",
+      "category": "LOGISTICS",
+      "collection": "FAB_cart",
+      "file": "fab_assets.blend",
+      "size": [
+        1.36,
+        0.7,
+        1.485
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "person_clean": {
+      "name": "Cleanroom operator / standing",
+      "category": "PEOPLE",
+      "collection": "FAB_person_clean",
+      "file": "fab_assets.blend",
+      "size": [
+        0.5934,
+        0.3507,
+        1.757
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "human adult standing coverall worker"
+    },
+    "person_worker": {
+      "name": "Utility worker / standing",
+      "category": "PEOPLE",
+      "collection": "FAB_person_worker",
+      "file": "fab_assets.blend",
+      "size": [
+        0.5934,
+        0.373,
+        1.782
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "human adult standing coverall worker"
+    },
+    "foup": {
+      "name": "FOUP carrier",
+      "category": "LOGISTICS",
+      "collection": "FAB_foup",
+      "file": "fab_assets.blend",
+      "size": [
+        0.48,
+        0.4715,
+        0.555
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "amr": {
+      "name": "AMR · empty platform",
+      "category": "ROBOT",
+      "collection": "FAB_amr",
+      "file": "fab_assets.blend",
+      "size": [
+        1.14,
+        1.49,
+        0.71
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "mobile robot"
+    },
+    "amr_foup": {
+      "name": "AMR · FOUP transport",
+      "category": "ROBOT",
+      "collection": "FAB_amr_foup",
+      "file": "fab_assets.blend",
+      "size": [
+        1.14,
+        1.49,
+        1.645
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "mobile robot"
+    },
+    "cobot": {
+      "name": "Cobot · standby",
+      "category": "ROBOT",
+      "collection": "FAB_cobot",
+      "file": "fab_assets.blend",
+      "size": [
+        1.099,
+        0.91,
+        2.225
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "collaborative arm"
+    },
+    "cobot_work": {
+      "name": "Cobot · working",
+      "category": "ROBOT",
+      "collection": "FAB_cobot_work",
+      "file": "fab_assets.blend",
+      "size": [
+        1.429,
+        1.14,
+        1.84
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "collaborative arm"
+    },
+    "humanoid": {
+      "name": "Humanoid · standing",
+      "category": "ROBOT",
+      "collection": "FAB_humanoid",
+      "file": "fab_assets.blend",
+      "size": [
+        1.0865,
+        0.46,
+        1.825
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "biped robot"
+    },
+    "humanoid_carry": {
+      "name": "Humanoid · carrying",
+      "category": "ROBOT",
+      "collection": "FAB_humanoid_carry",
+      "file": "fab_assets.blend",
+      "size": [
+        1.0865,
+        0.8075,
+        1.825
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "biped robot"
+    },
+    "rack": {
+      "name": "FOUP buffer rack",
+      "category": "LOGISTICS",
+      "collection": "FAB_rack",
+      "file": "fab_assets.blend",
+      "size": [
+        1.58,
+        0.77,
+        1.92
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "oht_vehicle": {
+      "name": "OHT · FOUP carrier",
+      "category": "LOGISTICS",
+      "collection": "FAB_oht_vehicle",
+      "file": "fab_assets.blend",
+      "size": [
+        0.9,
+        0.6825,
+        1.495
+      ],
+      "mount": "OVERHEAD",
+      "version": "0.3.0",
+      "tags": "overhead transport"
+    },
+    "rail_straight": {
+      "name": "OHT rail · straight 2m",
+      "category": "LOGISTICS",
+      "collection": "FAB_rail_straight",
+      "file": "fab_assets.blend",
+      "size": [
+        2.0,
+        0.21,
+        0.1375
+      ],
+      "mount": "OVERHEAD",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "rail_curve": {
+      "name": "OHT rail · 90° corner",
+      "category": "LOGISTICS",
+      "collection": "FAB_rail_curve",
+      "file": "fab_assets.blend",
+      "size": [
+        1.1098,
+        1.1098,
+        0.0647
+      ],
+      "mount": "OVERHEAD",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "oht_support": {
+      "name": "OHT ceiling suspension",
+      "category": "LOGISTICS",
+      "collection": "FAB_oht_support",
+      "file": "fab_assets.blend",
+      "size": [
+        1.1,
+        0.38,
+        0.94
+      ],
+      "mount": "OVERHEAD",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "utility_pad": {
+      "name": "Utility pad · 4 x 3m",
+      "category": "SPACE",
+      "collection": "FAB_utility_pad",
+      "file": "fab_assets.blend",
+      "size": [
+        4.0,
+        3.0,
+        0.11
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "floor_tile": {
+      "name": "Cleanroom floor · 2 x 2m",
+      "category": "SPACE",
+      "collection": "FAB_floor_tile",
+      "file": "fab_assets.blend",
+      "size": [
+        2.0,
+        2.0,
+        0.203
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "wall": {
+      "name": "Cleanroom wall module",
+      "category": "SPACE",
+      "collection": "FAB_wall",
+      "file": "fab_assets.blend",
+      "size": [
+        2.0,
+        0.2075,
+        2.7
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "ffu": {
+      "name": "FFU ceiling module",
+      "category": "SPACE",
+      "collection": "FAB_ffu",
+      "file": "fab_assets.blend",
+      "size": [
+        2.0,
+        1.2,
+        0.2025
+      ],
+      "mount": "OVERHEAD",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "pipe_straight": {
+      "name": "Pipe · straight 2m",
+      "category": "CONNECTION",
+      "collection": "FAB_pipe_straight",
+      "file": "fab_assets.blend",
+      "size": [
+        2.0,
+        0.23,
+        0.23
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "pipe_elbow": {
+      "name": "Pipe · elbow 90°",
+      "category": "CONNECTION",
+      "collection": "FAB_pipe_elbow",
+      "file": "fab_assets.blend",
+      "size": [
+        1.0768,
+        1.0768,
+        0.1427
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "duct": {
+      "name": "HVAC duct · 2m",
+      "category": "CONNECTION",
+      "collection": "FAB_duct",
+      "file": "fab_assets.blend",
+      "size": [
+        2.0,
+        0.64,
+        0.6
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "arrow": {
+      "name": "Relationship arrow",
+      "category": "CONNECTION",
+      "collection": "FAB_arrow",
+      "file": "fab_assets.blend",
+      "size": [
+        0.6316,
+        1.899,
+        0.045
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": ""
+    },
+    "wafer_inspector": {
+      "name": "Wafer visual inspection station",
+      "category": "PROCESS",
+      "collection": "FAB_wafer_inspector",
+      "file": "fab_assets.blend",
+      "size": [
+        1.98,
+        1.2662,
+        1.96
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "wafer inspection open hood optical"
+    },
+    "wafer_dicer": {
+      "name": "Wafer dicing cell",
+      "category": "PROCESS",
+      "collection": "FAB_wafer_dicer",
+      "file": "fab_assets.blend",
+      "size": [
+        1.62,
+        1.3705,
+        2.345
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "wafer cutting saw blade coolant"
+    },
+    "metrology_station": {
+      "name": "Optical metrology station",
+      "category": "PROCESS",
+      "collection": "FAB_metrology_station",
+      "file": "fab_assets.blend",
+      "size": [
+        1.345,
+        1.03,
+        1.92
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "laser check measurement microscope"
+    },
+    "microscope_bench": {
+      "name": "Microscope / ESD workbench",
+      "category": "PROCESS",
+      "collection": "FAB_microscope_bench",
+      "file": "fab_assets.blend",
+      "size": [
+        1.65,
+        0.86,
+        1.42
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "laboratory lab bench manual inspection"
+    },
+    "inspection_terminal": {
+      "name": "Mobile inspection terminal",
+      "category": "UTILITY",
+      "collection": "FAB_inspection_terminal",
+      "file": "fab_assets.blend",
+      "size": [
+        0.7676,
+        0.59,
+        1.625
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "HMI display control screen"
+    },
+    "scara": {
+      "name": "SCARA / vacuum handling",
+      "category": "ROBOT",
+      "collection": "FAB_scara",
+      "file": "fab_assets.blend",
+      "size": [
+        1.2722,
+        0.8531,
+        1.4202
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "robot arm assembly handling"
+    },
+    "wafer_300": {
+      "name": "300 mm silicon wafer",
+      "category": "LOGISTICS",
+      "collection": "FAB_wafer_300",
+      "file": "fab_assets.blend",
+      "size": [
+        0.3,
+        0.2997,
+        0.0055
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "wafer die sample"
+    },
+    "wafer_cassette": {
+      "name": "Open wafer cassette",
+      "category": "LOGISTICS",
+      "collection": "FAB_wafer_cassette",
+      "file": "fab_assets.blend",
+      "size": [
+        0.367,
+        0.38,
+        0.355
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "wafer storage carrier"
+    },
+    "chip_tray": {
+      "name": "Packaged chip tray",
+      "category": "LOGISTICS",
+      "collection": "FAB_chip_tray",
+      "file": "fab_assets.blend",
+      "size": [
+        0.42,
+        0.31,
+        0.084
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "chip semiconductor IC package sample"
+    },
+    "person_operate": {
+      "name": "Cleanroom operator / operating",
+      "category": "PEOPLE",
+      "collection": "FAB_person_operate",
+      "file": "fab_assets.blend",
+      "size": [
+        0.6131,
+        0.6407,
+        1.757
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "human adult cleanroom operate"
+    },
+    "person_carry": {
+      "name": "Cleanroom operator / wafer handling",
+      "category": "PEOPLE",
+      "collection": "FAB_person_carry",
+      "file": "fab_assets.blend",
+      "size": [
+        0.6131,
+        0.6687,
+        1.757
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "human adult cleanroom carry"
+    },
+    "person_seated": {
+      "name": "Cleanroom operator / seated with stool",
+      "category": "PEOPLE",
+      "collection": "FAB_person_seated",
+      "file": "fab_assets.blend",
+      "size": [
+        0.6134,
+        0.9798,
+        1.327
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "human adult cleanroom seated"
+    },
+    "person_walk": {
+      "name": "Cleanroom operator / walking",
+      "category": "PEOPLE",
+      "collection": "FAB_person_walk",
+      "file": "fab_assets.blend",
+      "size": [
+        0.5935,
+        0.878,
+        1.757
+      ],
+      "mount": "FLOOR",
+      "version": "0.3.0",
+      "tags": "human adult cleanroom walk"
+    }
+  }
+}

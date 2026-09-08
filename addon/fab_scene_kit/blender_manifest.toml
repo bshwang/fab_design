@@ -1,0 +1,14 @@
+schema_version = "1.0.0"
+id = "fab_scene_kit"
+version = "0.3.0"
+name = "FAB Scene Kit"
+tagline = "Assemble consistent isometric FAB illustrations offline"
+maintainer = "FAB Scene Kit"
+type = "add-on"
+tags = ["3D View", "Object", "Scene"]
+blender_version_min = "4.3.0"
+license = ["SPDX:GPL-3.0-or-later"]
+[permissions]
+files = "Read local assets and fonts and save scenes and renders"
+[build]
+paths_exclude_pattern = ["__pycache__/", "*.pyc", "*.blend1", "*.zip"]

@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.blend1
+*.blend2
+*.tmp
+.venv/
+.env
+.env.*
+outputs/
+reference/
+.codex/
+.codex-remote-attachments/

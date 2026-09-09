@@ -8,7 +8,7 @@ from bpy.props import (BoolProperty, EnumProperty, FloatProperty, FloatVectorPro
                        IntProperty, PointerProperty, StringProperty)
 from . import core, author
 
-bl_info = {'name':'FAB Scene Kit','author':'FAB Scene Kit','version':(0,4,0),
+bl_info = {'name':'FAB Scene Kit','author':'FAB Scene Kit','version':(0,4,1),
            'blender':(4,3,0),'location':'3D View > Sidebar > FAB Kit',
            'description':'Offline isometric FAB assembly','category':'3D View'}
 _enum_items=[]

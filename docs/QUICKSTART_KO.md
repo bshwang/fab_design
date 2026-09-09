@@ -1,11 +1,15 @@
-# FAB Scene Kit 0.4.0 — 사용법
+# FAB Scene Kit 0.4.1 — 사용법
+
+## Quick Capture
+
+N → FAB Author → Quick Capture: 전체 모델 선택 → Type/Key features 입력 → Capture Selection → 파란 형상 가이드 확인 → Copy Text (1000 max). 자세한 사용법은 `QUICK_CAPTURE_KO.md`를 참고하세요. 기존 0.4.0의 부품별 입력은 FAB Author 내부 Advanced로 이동했습니다. 기본 라이브러리 52개와 템플릿 3개는 같습니다.
 
 Blender 4.3용 로컬 FAB 인포그래픽 조립 도구입니다. 모델·템플릿이 설치 ZIP에 포함됩니다. 외부 Python, pip, API 키, MCP, 네트워크 연결은 필요하지 않습니다.
 
 ## 설치
 
 1. Blender에서 **Edit → Preferences → Add-ons**를 엽니다.
-2. 우측 메뉴의 **Install from Disk**에서 fab_scene_kit-0.4.0.zip을 선택합니다. ZIP을 먼저 풀 필요가 없습니다.
+2. 우측 메뉴의 **Install from Disk**에서 fab_scene_kit-0.4.1.zip을 선택합니다. ZIP을 먼저 풀 필요가 없습니다.
 3. 설치한 **FAB Scene Kit**을 활성화합니다.
 4. 3D Viewport에서 N을 누르고 **FAB Kit** 탭을 엽니다.
 

@@ -2,15 +2,15 @@
 
 Blender에서 일관된 스타일의 반도체 FAB 인포그래픽을 조립하는 애드온입니다.
 
-**현재 버전: 0.4.0 · 검증 환경: Blender 4.3.0 · 기본 52개 에셋 · 3개 템플릿 + 로컬 에셋 작성**
+**현재 버전: 0.4.1 · 검증 환경: Blender 4.3.0 · 기본 52개 에셋 · 3개 템플릿 + 로컬 에셋 작성**
 
 ![FAB Example — Light](docs/images/fab-light.jpg)
 
 ## 다운로드와 설치
 
-1. [애드온 ZIP 다운로드](https://github.com/bshwang/fab_design/raw/refs/heads/main/dist/fab_scene_kit-0.4.0.zip)
+1. [애드온 ZIP 다운로드](https://github.com/bshwang/fab_design/raw/refs/heads/main/dist/fab_scene_kit-0.4.1.zip)
 2. Blender에서 **Edit → Preferences → Add-ons → 메뉴 → Install from Disk**를 엽니다.
-3. 다운로드한 `fab_scene_kit-0.4.0.zip`을 선택하고 **FAB Scene Kit**을 활성화합니다. ZIP은 풀지 않습니다.
+3. 다운로드한 `fab_scene_kit-0.4.1.zip`을 선택하고 **FAB Scene Kit**을 활성화합니다. ZIP은 풀지 않습니다.
 4. 3D Viewport에서 **N → FAB Kit**을 엽니다.
 5. **FAB Example → Light 또는 Dark → Create New Scene**으로 시작합니다.
 
@@ -27,9 +27,21 @@ HTML 카탈로그는 **다운로드 후 브라우저에서 여세요**. 이미�
 
 사용자 매뉴얼도 이미지가 내장된 단일 HTML입니다. 실제 Blender 화면 11장과 렌더 3장을 포함하고, 설치 → 템플릿 → 검사 셀 조립 → Cleanroom 편집 → 사람 포즈 교체 → 라벨·OHT → PNG·`.blend` 저장을 설명합니다. 화면 확대, 목차 검색, 실습 체크리스트를 제공합니다. **다운로드한 HTML 파일 하나만** 옮기면 오프라인에서 본문과 그림을 읽을 수 있습니다.
 
+## Quick Capture — 1000자 형상 전달
+
+**N → FAB Author → Quick Capture**에서 전체 모델 선택 → Type / Key features 입력 → Capture Selection → 파란 형상 가이드 확인 → Copy Text (1000 max) 순서로 사용합니다. 별도 N 탭은 추가되지 않습니다. 기존 부품별 입력은 FAB Author의 **Advanced**에서 계속 사용할 수 있습니다.
+
+- [실제 화면이 포함된 Quick Capture HTML 매뉴얼](https://github.com/bshwang/fab_design/raw/refs/heads/main/dist/FAB_Quick_Capture_Manual_0.4.1_KO.html)
+- [짧은 사용 안내](docs/QUICK_CAPTURE_KO.md) · [FQ1 텍스트 형식](docs/QUICK_SCHEMA.md)
+- [938자 합성 AMMR 예제](dist/FAB_Quick_Capture_Example_0.4.1.txt)
+
+![Source and decoded shape guide](docs/images/quick-capture.jpg)
+
+타입·특징·전체 치수와 주요 형상의 위치·크기·방향을 1000자 이내 텍스트로 요약합니다. 받은 쪽에서는 Paste Quick Text + Preview로 형상을 확인한 뒤 FAB 스타일의 최종 모델로 발전시킵니다. 파란 가이드는 형상 요약이며 자동으로 완성된 에셋을 뜻하지 않습니다. 중요한 얇은 부품·창·구멍 등은 특징에 적고, 캡처 후 단위와 방향을 확인하세요. 네트워크 없이 실행하며 직접 복사/저장할 때만 텍스트를 내보냅니다.
+
 ## 포함 기능
 
-**0.4.0: N → FAB Author**에서 모델 정보를 텍스트로 작성하고 재사용 에셋으로 등록합니다.
+**Advanced: N → FAB Author → Advanced**에서 모델 정보를 텍스트로 작성하고 재사용 에셋으로 등록합니다.
 
 1. Equipment / AMR / AMMR / Robot Arm / Humanoid / OHT 타입과 기준 축·단위를 설정합니다.
 2. 원본 부품을 선택해 치수·위치·회전을 측정합니다. 단면, 파이프·케이블 경로와 관절 중심·축도 기록합니다.

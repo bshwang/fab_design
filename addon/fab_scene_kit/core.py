@@ -7,7 +7,7 @@ import bpy
 from mathutils import Vector, Matrix
 from . import geometry as g
 
-VERSION = '0.4.0'
+VERSION = '0.4.1'
 LIGHT = dict(navy='193747', mint='48BFA7', ice='DAE9E5', ivory='F0E8D7',
              gold='E6AD53', blue='6B93AB', white='FCF8EF', steel='A0B4B7',
              joint='C4D4D2', pad='DFE2D9', foup='B29256', display='325D70',

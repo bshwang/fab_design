@@ -11,6 +11,7 @@ from bpy.props import (BoolProperty, CollectionProperty, EnumProperty, FloatProp
 from bpy_extras.io_utils import ImportHelper, ExportHelper
 from mathutils import Euler, Vector
 from . import author_spec as spec, author_model as model
+from . import quick_spec, quick_capture
 
 _parent_items={}
 
@@ -57,6 +58,19 @@ class FABAuthorPart(bpy.types.PropertyGroup):
 
 
 class FABAuthorSettings(bpy.types.PropertyGroup):
+    workflow:EnumProperty(name='Workflow',items=[('QUICK','Quick Capture','Select the whole model; describe its features'),('ADVANCED','Advanced','Detailed component authoring and local library')],default='QUICK')
+    quick_type:EnumProperty(name='Type',items=[(k,v[0],v[1]) for k,v in spec.TYPES.items()],default='AMMR')
+    quick_features:StringProperty(name='Key features',description='Describe the silhouette and distinctive parts, in up to 240 characters',maxlen=240)
+    quick_units:EnumProperty(name='Units',items=[('SCENE','Scene units','Use the current scene scale'),('CUSTOM','Custom','Set meters per Blender unit')],default='SCENE')
+    quick_scale:FloatProperty(name='Meters / unit',default=1,min=.000001,max=1000,precision=6)
+    quick_rotation:FloatVectorProperty(name='Reference rotation',size=3,subtype='EULER',description='Orientation of the asset frame in world space; local -Y is front, +Z is up')
+    quick_options:BoolProperty(name='Units / front direction')
+    quick_receive:BoolProperty(name='Receive a result')
+    quick_text:StringProperty()
+    quick_result:StringProperty()
+    quick_signature:StringProperty()
+    quick_status:StringProperty()
+    quick_preview:PointerProperty(type=bpy.types.Object)
     document_id:StringProperty()
     asset_name:StringProperty(name='Asset name',default='My Asset',maxlen=160)
     asset_type:EnumProperty(name='Asset type',items=[(k,v[0],v[1]) for k,v in spec.TYPES.items()],default='AMMR',update=type_changed)
@@ -374,12 +388,180 @@ def button(layout,action,text,icon='NONE',enabled=True):
     row.operator('fab_author.action',text=text,icon=icon).action=action
 
 
+def quick_signature(context,s):
+    scale=context.scene.unit_settings.scale_length if s.quick_units=='SCENE' else s.quick_scale
+    return json.dumps([s.quick_type,s.quick_features,scale,list(s.quick_rotation)],ensure_ascii=False)
+
+
+def quick_ready(context,s):
+    return bool(s.quick_text) and s.quick_signature==quick_signature(context,s)
+
+
+def store_quick(context,s,result):
+    # Preserve previous captures in .blend Text blocks; no automatic file/network export.
+    if s.quick_text:
+        archive=bpy.data.texts.new('FAB Previous Quick Capture'); archive.write(s.quick_text)
+    previous=s.quick_preview
+    quick_capture.preview(context,s,result)
+    if previous and previous.name in context.scene.objects:
+        previous.hide_set(True); previous.hide_render=True
+    s.quick_text=result['text']; s.quick_result=json.dumps(result)
+    s.quick_signature=quick_signature(context,s)
+
+
+def receive_quick(context,s,text):
+    packet,shapes=quick_spec.unpack(text)
+    previous=json.loads(s.quick_result) if s.quick_result and s.quick_text==text else None
+    if previous:
+        unit,origin,rotation=previous['unit'],previous['origin'],previous['rotation']
+    else:
+        unit=context.scene.unit_settings.scale_length
+        origin=list(context.scene.cursor.location); rotation=[0,0,0]
+        if context.scene.fab.enabled: origin[2]=max(origin[2],context.scene.fab.floor_z)
+    s.quick_type=packet['t']; s.quick_features=packet['f']
+    s.quick_units='CUSTOM'; s.quick_scale=unit; s.quick_rotation=rotation
+    result={'text':text,'dimensions':packet['d'],'objects':0,'vertices':0,'candidates':len(shapes),
+            'kept':len(shapes),'small':0,'seconds':0,'unit':unit,'origin':origin,'rotation':rotation}
+    store_quick(context,s,result)
+    s.workflow='QUICK'
+    s.quick_status='Received shape guide in meters. This is a geometric summary, not a finished asset.'
+
+
+class FABAUTHOR_OT_quick(bpy.types.Operator):
+    bl_idname='fab_author.quick'
+    bl_label='Quick Capture'
+    bl_options={'UNDO'}
+    action:StringProperty()
+    def execute(self,context):
+        s=context.scene.fab_author
+        try:
+            if self.action=='CAPTURE':
+                result=quick_capture.capture(context,s)
+                store_quick(context,s,result)
+                s.quick_status=f"Captured {result['objects']} objects in {result['seconds']} s. Shape guide is beside the source; check proportions before copying."
+            elif self.action=='COPY':
+                if not quick_ready(context,s):
+                    raise ValueError('Settings changed. Capture Selection again before copying.')
+                quick_spec.unpack(s.quick_text)
+                context.window_manager.clipboard=s.quick_text
+                if context.window_manager.clipboard!=s.quick_text:
+                    raise ValueError('Clipboard is unavailable. Use Save Text instead.')
+                s.quick_status=f'Copied {quick_spec.count(s.quick_text)} / 1000 characters. Geometry edits require a new capture.'
+            elif self.action=='PASTE':
+                receive_quick(context,s,context.window_manager.clipboard)
+            elif self.action=='ADVANCED':
+                if not s.quick_text:
+                    raise ValueError('Capture or paste Quick text first.')
+                read_document(s,spec.dumps(quick_spec.recipe(s.quick_text)))
+                s.workflow='ADVANCED'
+                s.status='Quick shapes loaded as an editable draft. Roles and functional details still need interpretation.'
+            elif self.action=='LIBRARY':
+                s.workflow='ADVANCED'; s.step='LIBRARY'
+            elif self.action=='SELECT':
+                if not s.quick_preview or s.quick_preview.name not in context.scene.objects:
+                    raise ValueError('The shape guide was removed. Capture again.')
+                s.quick_preview.hide_set(False)
+                from . import core
+                core.select(context,s.quick_preview)
+                s.quick_status='Shape guide selected. Reselect the original model before capturing again.'
+            else:
+                raise ValueError('Unknown Quick Capture action.')
+            return {'FINISHED'}
+        except (ValueError,RuntimeError,OSError,TypeError,KeyError,UnicodeError) as exc:
+            s.quick_status=str(exc); self.report({'ERROR'},str(exc)); return {'CANCELLED'}
+
+
+class FABAUTHOR_OT_quick_export(bpy.types.Operator,ExportHelper):
+    bl_idname='fab_author.quick_export'
+    bl_label='Save Quick Capture Text'
+    filename_ext='.txt'
+    filter_glob:StringProperty(default='*.txt',options={'HIDDEN'})
+    def execute(self,context):
+        s=context.scene.fab_author
+        try:
+            if not quick_ready(context,s):
+                raise ValueError('Capture Selection again before exporting changed settings.')
+            quick_spec.unpack(s.quick_text)
+            Path(self.filepath).write_text(s.quick_text,encoding='utf-8')
+            s.quick_status=f'Saved {quick_spec.count(s.quick_text)} characters as UTF-8 text, without a trailing newline.'
+            return {'FINISHED'}
+        except (OSError,ValueError) as exc:
+            self.report({'ERROR'},str(exc)); return {'CANCELLED'}
+
+
+class FABAUTHOR_OT_quick_import(bpy.types.Operator,ImportHelper):
+    bl_idname='fab_author.quick_import'
+    bl_label='Import Quick Capture Text'
+    bl_options={'UNDO'}
+    filename_ext='.txt'
+    filter_glob:StringProperty(default='*.txt;*.json',options={'HIDDEN'})
+    def execute(self,context):
+        try:
+            if context.mode!='OBJECT': raise ValueError('Return to Object Mode first.')
+            path=Path(self.filepath)
+            if path.stat().st_size>4000: raise ValueError('Quick Capture file exceeds the 1000-character format.')
+            receive_quick(context,context.scene.fab_author,path.read_text(encoding='utf-8-sig'))
+            return {'FINISHED'}
+        except (ValueError,RuntimeError,OSError,UnicodeError) as exc:
+            self.report({'ERROR'},str(exc)); return {'CANCELLED'}
+
+
+def draw_quick(lay,context,s):
+    message(lay,'1 Select the whole model in Object Mode.',context)
+    message(lay,'2 Choose a type and describe what makes it recognizable.',context)
+    lay.prop(s,'quick_type')
+    lay.label(text='Key features (up to 240 characters)')
+    lay.prop(s,'quick_features',text='')
+    message(lay,'Example: Low base, rear arm, two-finger gripper, front scanner.',context)
+    lay.prop(s,'quick_options',icon='TRIA_DOWN' if s.quick_options else 'TRIA_RIGHT',emboss=False)
+    if s.quick_options:
+        box=lay.box(); box.prop(s,'quick_units')
+        if s.quick_units=='CUSTOM': box.prop(s,'quick_scale')
+        box.prop(s,'quick_rotation')
+        message(box,'Default: world +Z up, -Y front. Rotate this frame only if your source faces another direction. For millimeter-sized CAD coordinates, use Custom 0.001.',context)
+    def action(layout,key,label,icon='NONE',enabled=True):
+        row=layout.row(); row.enabled=enabled
+        row.operator('fab_author.quick',text=label,icon=icon).action=key
+    row=lay.row(); row.scale_y=1.35
+    action(row,'CAPTURE','Capture Selection','OUTLINER_OB_MESH',context.mode=='OBJECT' and bool(context.selected_objects) and bool(s.quick_features.strip()))
+    if s.quick_text:
+        ready=quick_ready(context,s)
+        result=json.loads(s.quick_result)
+        box=lay.box(); box.label(text=f'{quick_spec.count(s.quick_text)} / 1000 characters',icon='CHECKMARK' if ready else 'ERROR')
+        d=result['dimensions']
+        message(box,'Size: '+ ' x '.join(f'{v:.3f}' for v in d)+' m',context)
+        message(box,f"{result['kept']} shape envelopes / {result['candidates']} candidates; {result['small']} tiny islands omitted.",context)
+        if max(d)>20 or max(d)<.05:
+            message(box,'Unusual asset size. Check Units before sending.',context,'ERROR')
+        if not ready:
+            message(box,'Settings changed. Capture again to update the text.',context,'ERROR')
+        message(box,'3 Compare the shape guide beside the source. Check size, front and key protrusions.',context)
+        action(box,'SELECT','Select Shape Guide','RESTRICT_SELECT_OFF',bool(s.quick_preview))
+        action(lay,'COPY','Copy Text (1000 max)','COPYDOWN',ready)
+        row=lay.row(); row.enabled=ready; row.operator('fab_author.quick_export',text='Save Text...',icon='EXPORT')
+        message(lay,'Snapshot only: capture again after editing geometry. The text summarizes envelopes; it does not contain the original mesh.',context)
+    lay.prop(s,'quick_receive',icon='TRIA_DOWN' if s.quick_receive else 'TRIA_RIGHT',emboss=False)
+    if s.quick_receive:
+        box=lay.box()
+        action(box,'PASTE','Paste Quick Text + Preview','PASTEDOWN',context.mode=='OBJECT')
+        row=box.row(); row.enabled=context.mode=='OBJECT'; row.operator('fab_author.quick_import',text='Import Quick Text...',icon='IMPORT')
+        action(box,'ADVANCED','Edit Summary in Advanced','EDITMODE_HLT',bool(s.quick_text))
+        action(box,'LIBRARY','Import Finished Asset...','ASSET_MANAGER')
+        message(box,'Paste reproduces the geometric guide. Import the returned Author .blend through Local Library to use the finished FAB asset.',context)
+    if s.quick_status:
+        message(lay.box(),s.quick_status,context,'INFO')
+
+
 class FABAUTHOR_PT_main(bpy.types.Panel):
     bl_label='FAB Asset Author'
     bl_idname='FABAUTHOR_PT_main'
     bl_space_type='VIEW_3D'; bl_region_type='UI'; bl_category='FAB Author'
     def draw(self,context):
         s=context.scene.fab_author; p=current(s); lay=self.layout
+        lay.prop(s,'workflow',expand=True)
+        if s.workflow=='QUICK':
+            draw_quick(lay,context,s)
+            return
         lay.prop(s,'step',expand=True)
         if s.step=='SETUP':
             lay.label(text='Asset name'); lay.prop(s,'asset_name',text='')
@@ -499,7 +681,7 @@ class FABAUTHOR_PT_main(bpy.types.Panel):
             box=lay.box(); message(box,s.status,context,'INFO')
 
 
-classes=(FABAuthorBinding,FABAuthorPart,FABAuthorSettings,FABAUTHOR_OT_action,FABAUTHOR_OT_export,
+classes=(FABAuthorBinding,FABAuthorPart,FABAuthorSettings,FABAUTHOR_OT_quick,FABAUTHOR_OT_quick_export,FABAUTHOR_OT_quick_import,FABAUTHOR_OT_action,FABAUTHOR_OT_export,
          FABAUTHOR_OT_import,FABAUTHOR_OT_import_asset,FABAUTHOR_UL_parts,FABAUTHOR_PT_main)
 
 

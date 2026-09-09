@@ -1,6 +1,6 @@
 schema_version = "1.0.0"
 id = "fab_scene_kit"
-version = "0.4.0"
+version = "0.4.1"
 name = "FAB Scene Kit"
 tagline = "Assemble consistent isometric FAB illustrations offline"
 maintainer = "FAB Scene Kit"

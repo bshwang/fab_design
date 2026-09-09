@@ -62,6 +62,16 @@ for encoded in author_images:
     assert base64.b64decode(encoded,validate=True).startswith(b'\xff\xd8\xff')
 for target in re.findall(r'href="#([^"]+)"',author_html):
     assert f'id="{target}"' in author_html
+quick_html=(ROOT/'dist/FAB_Quick_Capture_Manual_0.4.1_KO.html').read_text(encoding='utf-8')
+quick_images=re.findall(r'<img[^>]+src="data:image/jpeg;base64,([^"]+)"',quick_html)
+assert len(quick_images)==3 and '<script' not in quick_html and "connect-src 'none'" in quick_html
+for encoded in quick_images:
+    assert base64.b64decode(encoded,validate=True).startswith(b'\xff\xd8\xff')
+for target in re.findall(r'href="#([^"]+)"',quick_html):
+    assert f'id="{target}"' in quick_html
+quick_text=(ROOT/'dist/FAB_Quick_Capture_Example_0.4.1.txt').read_text(encoding='utf-8')
+assert len(quick_text.encode('utf-16-le'))//2<=1000
+assert json.loads(quick_text)['v']=='FQ1'
 for line in (ROOT / 'dist/SHA256SUMS.txt').read_text(encoding='utf-8').splitlines():
     digest, name = line.split('  ', 1)
     assert hashlib.sha256((ROOT / 'dist' / name).read_bytes()).hexdigest() == digest, name

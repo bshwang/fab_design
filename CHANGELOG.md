@@ -1,5 +1,16 @@
 # Changes
 
+## 0.4.1 — Quick Capture
+
+- Whole-model selection plus type/features instead of manual component assignment.
+- Strict 1000-character FQ1 text with quantized major envelopes, clipboard/file import/export and local decoded guide.
+- Coincident-vertex analysis, connected-component bounds and area-weighted concavity handling for joined CAD meshes.
+- Source geometry preserved; guide revisions and previous text retained locally.
+- Explicit units/front override, stale-settings guard and import placement above the FAB floor.
+- Existing authoring under Advanced; unchanged FAB Kit / FAB Author sidebar tabs.
+- Offline Korean HTML tutorial with actual Blender screenshots.
+
+
 ## 0.4.0 — FAB Author
 
 - Offline type-guided component authoring for Equipment, AMR, AMMR, Robot Arm, Humanoid and OHT.

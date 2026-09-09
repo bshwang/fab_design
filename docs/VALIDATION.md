@@ -1,6 +1,13 @@
 # Validation scope
 
-The current add-on is FAB Scene Kit 0.4.0. Its real ZIP was installed and tested in Blender 4.3.0 under an isolated extension namespace. The SHA-256 is recorded in `dist/manifest.json` and `dist/SHA256SUMS.txt`. Bundled asset geometry remains at library version 0.3.0.
+0.4.1 Quick Capture: 43 synthetic capture checks, 86 Author regression checks, 99 assembly checks and 30 final ZIP installation checks passed in Blender 4.3.0. Separate and joined synthetic CAD, mm/rotated frames, connected concave shapes, Unicode budgets, malformed packets, original-geometry preservation and paste placement were exercised. Actual Blender capture/copy/paste passed using a 938-character, 43-envelope AMMR guide.
+
+Three comparison renders were preserved and inspected. Corrections addressed clipped framing, incorrect joined-shell splitting and low guide contrast. The final blue guide passed visual inspection; eight fresh-process scene checks passed. The guide is a lossy geometric summary, with no inferred semantic parts or hidden joints. Production CAD and other Blender versions were not directly tested.
+
+The Quick Capture HTML contains two actual screenshots and one comparison render, all embedded. Images and anchors passed static validation; browser layout was not directly inspected.
+
+
+The current add-on is FAB Scene Kit 0.4.1. Its real ZIP was installed and tested in Blender 4.3.0 under an isolated extension namespace. The SHA-256 is recorded in `dist/manifest.json` and `dist/SHA256SUMS.txt`. Bundled asset geometry remains at library version 0.3.0.
 
 Phase 2 validation: 86 authoring checks, 99 existing assembly regression checks and 19 actual ZIP installation checks. This covered rotated/mm geometry measurement, local bindings, file/text round trips, actual Edit Mode outline capture, all six types and shapes, joint data, revision preservation, returned .blend geometry, embedded thumbnails, template placement, theme changes and save/reopen. Native Windows clipboard and the four-step authoring panel were also exercised in Blender.
 

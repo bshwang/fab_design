@@ -1,11 +1,17 @@
 # Changes
 
-## Unreleased — Guided Brief design
+## 0.4.2 — Guided Brief implemented
 
-- AMMR wizard design with explicit source scope, functional parts, optional measurements and a 1000-character brief review.
-- Interactive design prototype with an independent synthetic hierarchy; no Blender connection or actual geometry measurement.
-- Generic Blender script to export selected object hierarchies to a Text block and copy results only within the 1000-character limit.
-- 23 pure state/serialization checks. The installable add-on remains version 0.4.1.
+- Actual five-step Blender wizard in the existing FAB Author sidebar; Guided Brief is the default for new author drafts.
+- Explicit source snapshots, multiple roots/collections, helper review, Keep/Exclude, selection restore and missing-source reconnection.
+- Type-driven functional cards: outline, arm count/kind/axes, mechanisms, role, placement, motion and relationship.
+- Selected-only or child-inclusive part bindings; Describe Only supports components without geometry binding.
+- Optional evaluated current-pose measurements with units/front frame and stale-geometry export protection.
+- Strict complete AW1 export within 1000 UTF-16 units; no silent truncation. Local drafts and object hierarchy export remain available.
+- Existing Quick Capture, Advanced authoring, 52 built-ins and three templates preserved.
+- Offline Korean HTML tutorial containing five actual Blender UI screenshots and a synthetic 543-character example.
+- 58 installed Guided checks; 44 Quick, 86 Author and 99 assembly regression checks; 30 installed legacy checks. Actual GUI copy and saved workspace reopening verified in Blender 4.3.0.
+- Previous interactive design demo remains reference-only; it is not the installed UI.
 
 ## 0.4.1 — Quick Capture
 

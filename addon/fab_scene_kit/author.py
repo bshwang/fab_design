@@ -11,7 +11,7 @@ from bpy.props import (BoolProperty, CollectionProperty, EnumProperty, FloatProp
 from bpy_extras.io_utils import ImportHelper, ExportHelper
 from mathutils import Euler, Vector
 from . import author_spec as spec, author_model as model
-from . import quick_spec, quick_capture
+from . import quick_spec, quick_capture, brief_ui
 
 _parent_items={}
 
@@ -58,7 +58,7 @@ class FABAuthorPart(bpy.types.PropertyGroup):
 
 
 class FABAuthorSettings(bpy.types.PropertyGroup):
-    workflow:EnumProperty(name='Workflow',items=[('QUICK','Quick Capture','Select the whole model; describe its features'),('ADVANCED','Advanced','Detailed component authoring and local library')],default='QUICK')
+    workflow:EnumProperty(name='Workflow',items=[('GUIDED','Guided Brief','Describe equipment, confirm source scope and measure key components',2),('QUICK','Quick Capture','Legacy geometric summary',0),('ADVANCED','Advanced','Detailed component authoring and local library',1)],default='GUIDED')
     quick_type:EnumProperty(name='Type',items=[(k,v[0],v[1]) for k,v in spec.TYPES.items()],default='AMMR')
     quick_features:StringProperty(name='Key features',description='Describe the silhouette and distinctive parts, in up to 240 characters',maxlen=240)
     quick_units:EnumProperty(name='Units',items=[('SCENE','Scene units','Use the current scene scale'),('CUSTOM','Custom','Set meters per Blender unit')],default='SCENE')
@@ -559,6 +559,9 @@ class FABAUTHOR_PT_main(bpy.types.Panel):
     def draw(self,context):
         s=context.scene.fab_author; p=current(s); lay=self.layout
         lay.prop(s,'workflow',expand=True)
+        if s.workflow=='GUIDED':
+            brief_ui.draw(lay,context)
+            return
         if s.workflow=='QUICK':
             draw_quick(lay,context,s)
             return
@@ -689,9 +692,11 @@ def register():
     for cls in classes:
         bpy.utils.register_class(cls)
     bpy.types.Scene.fab_author=PointerProperty(type=FABAuthorSettings)
+    brief_ui.register()
 
 
 def unregister():
+    brief_ui.unregister()
     del bpy.types.Scene.fab_author
     for cls in reversed(classes):
         bpy.utils.unregister_class(cls)

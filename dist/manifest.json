@@ -1,8 +1,8 @@
 {
-  "package": "fab_scene_kit-0.4.1.zip",
-  "bytes": 11065877,
-  "sha256": "7d54ea8398af57c780c579631c9d8c618f8064da7bfa00c57fadb041499cf97d",
-  "version": "0.4.1",
+  "package": "fab_scene_kit-0.4.2.zip",
+  "bytes": 11085629,
+  "sha256": "742e898ae69bf328030328ef0c678b94fa705e3a270656850e0cca5f35a75a77",
+  "version": "0.4.2",
   "blender_tested": "4.3.0",
   "assets": 52
 }

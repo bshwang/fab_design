@@ -72,6 +72,25 @@ for target in re.findall(r'href="#([^"]+)"',quick_html):
 quick_text=(ROOT/'dist/FAB_Quick_Capture_Example_0.4.1.txt').read_text(encoding='utf-8')
 assert len(quick_text.encode('utf-16-le'))//2<=1000
 assert json.loads(quick_text)['v']=='FQ1'
+guided_html=(ROOT/'dist/FAB_Guided_Brief_Manual_0.4.2_KO.html').read_text(encoding='utf-8')
+guided_images=re.findall(r'<img[^>]+src="data:image/jpeg;base64,([^"]+)"',guided_html)
+assert len(guided_images)==5 and '<script' not in guided_html and "connect-src 'none'" in guided_html
+for encoded in guided_images:
+    assert base64.b64decode(encoded,validate=True).startswith(b'\xff\xd8\xff')
+for target in re.findall(r'href="#([^"]+)"',guided_html):
+    assert f'id="{target}"' in guided_html
+guided_text=(ROOT/'dist/FAB_Guided_Brief_Example_0.4.2.txt').read_text(encoding='utf-8')
+assert len(guided_text.encode('utf-16-le'))//2==543
+assert json.loads(guided_text)['v']=='AW1'
+assert json.loads(guided_text)['parts'][0]['d']==[2.0,1.4,.35]
+assert {'brief_spec.py','brief_ui.py','source_scope.py','GUIDED_BRIEF_KO.md'}<=files
+def literal_assignment(path,name):
+    for node in ast.parse(path.read_text(encoding='utf-8')).body:
+        if isinstance(node,ast.Assign) and any(isinstance(t,ast.Name) and t.id==name for t in node.targets):
+            return ast.literal_eval(node.value)
+    raise AssertionError('Missing version assignment: '+name)
+assert literal_assignment(source/'__init__.py','bl_info')['version']==tuple(map(int,manifest['version'].split('.')))
+assert literal_assignment(source/'core.py','VERSION')==manifest['version']
 for line in (ROOT / 'dist/SHA256SUMS.txt').read_text(encoding='utf-8').splitlines():
     digest, name = line.split('  ', 1)
     assert hashlib.sha256((ROOT / 'dist' / name).read_bytes()).hexdigest() == digest, name

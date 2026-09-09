@@ -1,4 +1,8 @@
-# FAB Scene Kit 0.4.1 — 사용법
+# FAB Scene Kit 0.4.2 — 사용법
+
+## Guided Brief
+
+**N → FAB Author → Guided Brief**: 대상 추가·보조 형상 제외 → 장비 구성 선택 → 주요 부품 연결 → 필요 시 치수 측정 → 1000자 AW1 설명 내보내기. [단계별 사용법](GUIDED_BRIEF_KO.md)을 참고하세요. 기존 Quick Capture와 Advanced는 같은 탭에서 선택할 수 있습니다.
 
 ## Quick Capture
 
@@ -9,7 +13,7 @@ Blender 4.3용 로컬 FAB 인포그래픽 조립 도구입니다. 모델·템플
 ## 설치
 
 1. Blender에서 **Edit → Preferences → Add-ons**를 엽니다.
-2. 우측 메뉴의 **Install from Disk**에서 fab_scene_kit-0.4.1.zip을 선택합니다. ZIP을 먼저 풀 필요가 없습니다.
+2. 우측 메뉴의 **Install from Disk**에서 fab_scene_kit-0.4.2.zip을 선택합니다. ZIP을 먼저 풀 필요가 없습니다. 업데이트 후 Blender를 재시작하면 이전에 로드된 코드와 혼동을 줄일 수 있습니다.
 3. 설치한 **FAB Scene Kit**을 활성화합니다.
 4. 3D Viewport에서 N을 누르고 **FAB Kit** 탭을 엽니다.
 

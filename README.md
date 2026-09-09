@@ -2,25 +2,33 @@
 
 Blender에서 일관된 스타일의 반도체 FAB 인포그래픽을 조립하는 애드온입니다.
 
-**현재 버전: 0.4.1 · 검증 환경: Blender 4.3.0 · 기본 52개 에셋 · 3개 템플릿 + 로컬 에셋 작성**
+**현재 버전: 0.4.2 · 검증 환경: Blender 4.3.0 · 기본 52개 에셋 · 3개 템플릿 + 로컬 에셋 작성**
 
-## Guided Brief 마법사 설계
+## Guided Brief — 실제 애드온 5단계 마법사
 
-AMMR의 대상 지정 → 구성 설명 → 주요 부품 연결 → 측정·관계 → 1000자 검토 흐름을 설계했습니다. **설계 검토용이며 0.4.1 애드온에 구현된 기능은 아닙니다.**
+**N → FAB Author → Guided Brief**에서 복잡한 원본 hierarchy를 바꾸지 않고 대상 지정 → 구성 설명 → 주요 부품 연결 → 측정·관계 → 1000자 검토를 수행합니다. **0.4.2에 구현되어 ZIP으로 설치할 수 있습니다.**
 
-- [마법사 상세 설계](docs/design/AUTHOR_WIZARD_DESIGN_v1_KO.md)
-- [화면 데모 HTML 다운로드](https://github.com/bshwang/fab_design/raw/refs/heads/main/docs/design/author-wizard-v1.html) — 다운로드 후 브라우저에서 열기
-- [하이라키 추출 스크립트 사용법](docs/HIERARCHY_EXPORT_KO.md)
+- Workspace 등 보조 객체를 직접 Keep / Exclude하고 포함 범위를 확정합니다.
+- AMMR / AMR / Robot arm / Equipment / Humanoid / OHT, 외형, 팔 수·축 수와 추가 기구를 선택합니다.
+- 주요 부품만 Selected Only / Include Children으로 연결합니다. 나머지는 Describe Only로 설명할 수 있습니다.
+- 전체·부품 크기와 중심을 현재 pose에서 선택적으로 측정합니다. 단위·방향·원본 변경 시 갱신합니다.
+- AW1 설명 텍스트를 **전체 1000자 이하**로 복사·내보냅니다. 초과한 내용은 자동 삭제하지 않습니다.
 
-데모는 독립적으로 만든 범용 예제 hierarchy를 사용하며, 실제 Blender 연결이나 CAD 측정을 수행하지 않습니다. 상태·문자열 생성 로직 23개 검사 결과는 [검증 보고서](docs/design/validation.json)에 있습니다.
+[실제 화면 5장이 포함된 HTML 튜토리얼 다운로드](https://github.com/bshwang/fab_design/raw/refs/heads/main/dist/FAB_Guided_Brief_Manual_0.4.2_KO.html) · [텍스트 사용 안내](docs/GUIDED_BRIEF_KO.md) · [AW1 형식](docs/GUIDED_BRIEF_SCHEMA.md) · [543자 합성 예제](dist/FAB_Guided_Brief_Example_0.4.2.txt)
+
+AW1은 모델링을 위한 구조·역할 설명입니다. 텍스트만으로 완성 에셋을 자동 생성하지 않습니다. 완성된 FAB Author 에셋은 기존 Local Library로 가져옵니다. Quick Capture와 Advanced도 같은 FAB Author 탭에 유지됩니다.
+
+[이전 설계 문서](docs/design/AUTHOR_WIZARD_DESIGN_v1_KO.md)와 [독립 HTML 설계 데모](docs/design/author-wizard-v1.html)는 참고용입니다. 설치된 화면과 사용법은 위의 0.4.2 매뉴얼을 따르세요. [Object hierarchy 추출 스크립트](docs/HIERARCHY_EXPORT_KO.md)도 사용할 수 있습니다.
 
 ![FAB Example — Light](docs/images/fab-light.jpg)
 
 ## 다운로드와 설치
 
-1. [애드온 ZIP 다운로드](https://github.com/bshwang/fab_design/raw/refs/heads/main/dist/fab_scene_kit-0.4.1.zip)
+1. [애드온 ZIP 다운로드](https://github.com/bshwang/fab_design/raw/refs/heads/main/dist/fab_scene_kit-0.4.2.zip)
 2. Blender에서 **Edit → Preferences → Add-ons → 메뉴 → Install from Disk**를 엽니다.
-3. 다운로드한 `fab_scene_kit-0.4.1.zip`을 선택하고 **FAB Scene Kit**을 활성화합니다. ZIP은 풀지 않습니다.
+3. 다운로드한 `fab_scene_kit-0.4.2.zip`을 선택하고 **FAB Scene Kit**을 활성화합니다. ZIP은 풀지 않습니다.
+업데이트 전 작업을 저장하고, 설치 후 Blender를 재시작하세요. 로컬 라이브러리는 애드온 설치 폴더 밖에 보관합니다.
+
 4. 3D Viewport에서 **N → FAB Kit**을 엽니다.
 5. **FAB Example → Light 또는 Dark → Create New Scene**으로 시작합니다.
 
@@ -105,5 +113,7 @@ python tools/verify_package.py
 ```
 
 소스를 수정한 후 `python tools/package.py`로 ZIP을 다시 만들 수 있습니다. 새 배포 전에는 Blender에서 설치·배치·렌더·저장을 다시 확인하십시오. [검증 범위](docs/VALIDATION.md)를 참고하세요.
+
+개발자용 Guided Brief 재현 검사는 `tools/test_guided_brief.py`에 있습니다. Blender `--background --factory-startup --python-exit-code 1 --python tools/test_guided_brief.py`로 합성 모델에서 실행합니다. 실제 ZIP 검사에는 `-- --installed`를 추가하고, `BLENDER_USER_CONFIG`를 저장소 안의 **미리 생성한** `docs/testing/config` 폴더로 지정하세요. 사용자 Blender 프로세스와 분리된 테스트 프로필을 사용합니다. 검사 산출물은 `docs/testing`에 저장됩니다.
 
 애드온 Python 코드의 라이선스는 [GPL-3.0-or-later](LICENSE.txt)입니다. 모델과 렌더에 관한 별도 설명은 [ASSET_LICENSE.txt](ASSET_LICENSE.txt)를 참고하세요.

@@ -1,5 +1,15 @@
 # Changes
 
+## 0.4.0 — FAB Author
+
+- Offline type-guided component authoring for Equipment, AMR, AMMR, Robot Arm, Humanoid and OHT.
+- Evaluated geometry measurements, frame/unit conversion, local source bindings and refresh.
+- Versioned JSON via files, clipboard and Text blocks; outline/path and joint metadata capture.
+- FAB palette model generation from six shapes, preserved previews and archived previous drafts.
+- Separate local library, versioned .blend files, embedded thumbnails and finished Author asset import.
+- Korean offline HTML guide with real Blender screenshots, synthetic AMMR recipe and individual asset example.
+- Built-in 52 assets and three templates remain at library version 0.3.0.
+
 ## 0.3.0
 
 - Expanded the library from 39 to 52 entries, including fixed pose variants.

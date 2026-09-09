@@ -27,22 +27,23 @@ with zipfile.ZipFile(package) as archive:
             ast.parse(archive.read(name).decode('utf-8'), filename=name)
 index = json.loads((source / 'data/library/index.json').read_text(encoding='utf-8'))
 extension = tomllib.loads((source / 'blender_manifest.toml').read_text(encoding='utf-8'))
-assert extension['version'] == index['version'] == manifest['version']
+assert extension['version'] == manifest['version']
+assert index['version'] == '0.3.0'  # Code 0.4 adds authoring; bundled geometry is unchanged.
 assert len(index['assets']) == manifest['assets'] == 52
 assert {p.stem for p in (source / 'data/library/previews').glob('*.png')} == set(index['assets'])
 assert {p.name for p in (source / 'data/templates').glob('*.blend')} == {'blank.blend', 'overview.blend', 'example.blend'}
-catalog = ROOT / 'dist' / f'FAB_Scene_Kit_Asset_Catalog_{manifest["version"]}.html'
+catalog = ROOT / 'dist' / f'FAB_Scene_Kit_Asset_Catalog_{index["version"]}.html'
 html = catalog.read_text(encoding='utf-8')
 assert '__VERSION__' not in html and '__CATALOG_DATA__' not in html
 data = json.loads(re.search(r'<script id="catalog-data" type="application/json">(.*?)</script>', html, re.S)[1])
-assert data['version'] == manifest['version']
+assert data['version'] == index['version']
 assert {a['id'] for a in data['assets']} == set(index['assets'])
 for asset in data['assets']:
     assert base64.b64decode(asset['image'].split(',')[1], validate=True) == (source / 'data/library/previews' / (asset['id'] + '.png')).read_bytes()
 assert len(data['images']) == 4
 for image in data['images'].values():
     assert base64.b64decode(image.split(',')[1], validate=True).startswith(b'\xff\xd8\xff')
-manual = ROOT / 'dist' / f'FAB_Scene_Kit_User_Manual_{manifest["version"]}_KO.html'
+manual = ROOT / 'dist' / 'FAB_Scene_Kit_User_Manual_0.3.0_KO.html'
 manual_html = manual.read_text(encoding='utf-8')
 assert not re.search(r'\{\{[^}]+\}\}|__VERSION__', manual_html)
 manual_images = re.findall(r'<img[^>]+src="data:image/(png|jpeg);base64,([^"]+)"', manual_html)
@@ -53,6 +54,14 @@ for kind, encoded in manual_images:
 assert len(re.findall(r'<section class="chapter"', manual_html)) == 11
 assert len(re.findall(r'<a href="#[^"]+" data-target=', manual_html)) == 11
 assert "connect-src 'none'" in manual_html
+author_html=(ROOT/'dist/FAB_Scene_Kit_Author_Manual_0.4.0_KO.html').read_text(encoding='utf-8')
+author_images=re.findall(r'<img[^>]+src="data:image/jpeg;base64,([^"]+)"',author_html)
+assert len(author_images)==5 and '<script' not in author_html
+assert '__VERSION__' not in author_html and "connect-src 'none'" in author_html
+for encoded in author_images:
+    assert base64.b64decode(encoded,validate=True).startswith(b'\xff\xd8\xff')
+for target in re.findall(r'href="#([^"]+)"',author_html):
+    assert f'id="{target}"' in author_html
 for line in (ROOT / 'dist/SHA256SUMS.txt').read_text(encoding='utf-8').splitlines():
     digest, name = line.split('  ', 1)
     assert hashlib.sha256((ROOT / 'dist' / name).read_bytes()).hexdigest() == digest, name

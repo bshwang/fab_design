@@ -2,21 +2,22 @@
 
 Blender에서 일관된 스타일의 반도체 FAB 인포그래픽을 조립하는 애드온입니다.
 
-**현재 버전: 0.3.0 · 검증 환경: Blender 4.3.0 · 52개 에셋 · 3개 템플릿**
+**현재 버전: 0.4.0 · 검증 환경: Blender 4.3.0 · 기본 52개 에셋 · 3개 템플릿 + 로컬 에셋 작성**
 
 ![FAB Example — Light](docs/images/fab-light.jpg)
 
 ## 다운로드와 설치
 
-1. [애드온 ZIP 다운로드](https://github.com/bshwang/fab_design/raw/refs/heads/main/dist/fab_scene_kit-0.3.0.zip)
+1. [애드온 ZIP 다운로드](https://github.com/bshwang/fab_design/raw/refs/heads/main/dist/fab_scene_kit-0.4.0.zip)
 2. Blender에서 **Edit → Preferences → Add-ons → 메뉴 → Install from Disk**를 엽니다.
-3. 다운로드한 `fab_scene_kit-0.3.0.zip`을 선택하고 **FAB Scene Kit**을 활성화합니다. ZIP은 풀지 않습니다.
+3. 다운로드한 `fab_scene_kit-0.4.0.zip`을 선택하고 **FAB Scene Kit**을 활성화합니다. ZIP은 풀지 않습니다.
 4. 3D Viewport에서 **N → FAB Kit**을 엽니다.
 5. **FAB Example → Light 또는 Dark → Create New Scene**으로 시작합니다.
 
 모델·재질·템플릿이 ZIP에 포함되어 있습니다. 추가 Python 패키지나 네트워크 연결 없이 실행합니다. GitHub의 **Code → Download ZIP**은 저장소 전체를 받는 기능입니다. Blender에 직접 설치할 파일은 위의 애드온 ZIP입니다.
 
-- [스크린샷 사용자 매뉴얼 HTML 다운로드](https://github.com/bshwang/fab_design/raw/refs/heads/main/dist/FAB_Scene_Kit_User_Manual_0.3.0_KO.html)
+- [FAB Author 0.4.0 화면 매뉴얼 HTML 다운로드](https://github.com/bshwang/fab_design/raw/refs/heads/main/dist/FAB_Scene_Kit_Author_Manual_0.4.0_KO.html)
+- [기존 장면 조립 매뉴얼 HTML 다운로드](https://github.com/bshwang/fab_design/raw/refs/heads/main/dist/FAB_Scene_Kit_User_Manual_0.3.0_KO.html)
 - [빠른 사용법](docs/QUICKSTART_KO.md)
 - [전체 HTML 카탈로그 다운로드](https://github.com/bshwang/fab_design/raw/refs/heads/main/dist/FAB_Scene_Kit_Asset_Catalog_0.3.0.html)
 - [다운로드 파일 SHA-256](dist/SHA256SUMS.txt)
@@ -27,6 +28,19 @@ HTML 카탈로그는 **다운로드 후 브라우저에서 여세요**. 이미�
 사용자 매뉴얼도 이미지가 내장된 단일 HTML입니다. 실제 Blender 화면 11장과 렌더 3장을 포함하고, 설치 → 템플릿 → 검사 셀 조립 → Cleanroom 편집 → 사람 포즈 교체 → 라벨·OHT → PNG·`.blend` 저장을 설명합니다. 화면 확대, 목차 검색, 실습 체크리스트를 제공합니다. **다운로드한 HTML 파일 하나만** 옮기면 오프라인에서 본문과 그림을 읽을 수 있습니다.
 
 ## 포함 기능
+
+**0.4.0: N → FAB Author**에서 모델 정보를 텍스트로 작성하고 재사용 에셋으로 등록합니다.
+
+1. Equipment / AMR / AMMR / Robot Arm / Humanoid / OHT 타입과 기준 축·단위를 설정합니다.
+2. 원본 부품을 선택해 치수·위치·회전을 측정합니다. 단면, 파이프·케이블 경로와 관절 중심·축도 기록합니다.
+3. JSON을 export/import하거나 클립보드로 왕복하고, 명세만으로 FAB 스타일 프리뷰를 생성합니다.
+4. 별도 로컬 라이브러리에 썸네일과 함께 저장하거나, 반환된 개별 FAB Author `.blend`를 import합니다. FAB Kit와 Asset Browser에서 조립합니다.
+
+[단계별 작성 안내](docs/AUTHOR_GUIDE_KO.md) · [텍스트 schema](docs/AUTHOR_SCHEMA.md) · [공개 연습용 AMMR JSON](dist/FAB_Author_AMMR_Example_0.4.0.json) · [개별 에셋 .blend 다운로드](https://github.com/bshwang/fab_design/raw/refs/heads/main/dist/FAB_Author_AMMR_Example_0.4.0.blend)
+
+![Text-authored AMMR with existing style references](docs/images/author-ammr.jpg)
+
+기본 52개 모델과 템플릿은 0.3.0 라이브러리를 유지합니다. 로컬 라이브러리는 설치 폴더 밖에 두고 별도로 보관합니다. 업데이트하면 이전에 배치한 에셋은 유지됩니다.
 
 | 분류 | 항목 수 |
 | --- | ---: |
@@ -51,7 +65,7 @@ HTML 카탈로그는 **다운로드 후 브라우저에서 여세요**. 이미�
 
 ## 범위
 
-정적인 설명용 장면 제작을 위한 모델과 도구입니다. 사람·로봇은 고정 포즈이며 상세 CAD 변환, 로봇 애니메이션, 물류 시뮬레이션은 포함하지 않습니다. 장비는 특정 제조사의 정밀 설계나 인증 모델이 아닙니다.
+정적인 설명용 장면 제작을 위한 모델과 도구입니다. FAB Author는 사용자가 역할과 표현 형상을 지정하는 측정·모델 생성 도구입니다. 복잡한 CAD의 자동 스타일 변환, 관절 rig/애니메이션, 물류 시뮬레이션은 포함하지 않습니다. 여섯 가지 형상과 단면·경로로 중요한 외형을 기술하고 프리뷰로 확인합니다. 장비는 특정 제조사의 인증 모델이 아닙니다.
 
 ## 저장소 구성
 
@@ -62,7 +76,7 @@ docs/                 사용법·장면 예시·검증 범위
 tools/                패키지 재생성·무결성 검사
 ```
 
-개발 환경에 Python 3.11 이상이 있으면 다음 명령으로 배포본의 체크섬, 65개 패키지 파일, 52개 에셋과 내장 이미지를 검사할 수 있습니다. 일반 설치·사용에는 필요하지 않습니다.
+개발 환경에 Python 3.11 이상이 있으면 다음 명령으로 배포본의 체크섬, 전체 패키지 파일, 52개 기본 에셋과 내장 이미지를 검사할 수 있습니다. 일반 설치·사용에는 필요하지 않습니다.
 
 ```powershell
 python tools/verify_package.py

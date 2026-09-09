@@ -1,15 +1,19 @@
-# FAB Scene Kit 0.3.0 — 사용법
+# FAB Scene Kit 0.4.0 — 사용법
 
 Blender 4.3용 로컬 FAB 인포그래픽 조립 도구입니다. 모델·템플릿이 설치 ZIP에 포함됩니다. 외부 Python, pip, API 키, MCP, 네트워크 연결은 필요하지 않습니다.
 
 ## 설치
 
 1. Blender에서 **Edit → Preferences → Add-ons**를 엽니다.
-2. 우측 메뉴의 **Install from Disk**에서 fab_scene_kit-0.3.0.zip을 선택합니다. ZIP을 먼저 풀 필요가 없습니다.
+2. 우측 메뉴의 **Install from Disk**에서 fab_scene_kit-0.4.0.zip을 선택합니다. ZIP을 먼저 풀 필요가 없습니다.
 3. 설치한 **FAB Scene Kit**을 활성화합니다.
 4. 3D Viewport에서 N을 누르고 **FAB Kit** 탭을 엽니다.
 
 다른 Blender 버전은 호환성 확인 후 사용하십시오. 일반 사용에는 소스 코드 편집이 필요하지 않습니다.
+
+## 모델에서 텍스트 명세 만들기 (0.4.0)
+
+**N → FAB Author**에서 타입·좌표계를 설정하고, 부품을 선택해 **Measure Selection**으로 치수·위치·회전을 읽습니다. 단면·경로·관절 축도 기록할 수 있습니다. **3 Review → Export JSON**으로 전달하고, 돌아온 recipe를 Import JSON으로 확인한 뒤 **4 Library → Save Asset + Thumbnail**로 등록합니다. 완성된 개별 FAB Author `.blend`는 **Import Author .blend**로 추가합니다. [단계별 작성 안내](AUTHOR_GUIDE_KO.md)를 참고하세요. 기본 52개 에셋과 3개 템플릿은 0.3.0 라이브러리를 유지합니다.
 
 ## 첫 장면
 
@@ -96,19 +100,15 @@ Check Scene은 식별자·모델 누락·변환 값·바닥 영역 등의 기본
 
 ## 포함 에셋
 
-총 **52개 라이브러리 항목**이며 고정 포즈 변형을 포함한 수입니다.
+- 제조 5종: Lithography, Etch, Deposition, Inspection, Testing
+- 유틸리티 10종: HVAC, Chiller, UPW, Wastewater, Scrubber, Bulk gas, Gas cabinet, Chemical supply, Electrical, Control room
+- 로봇 6항목: AMR·Cobot·Humanoid 각각 기본/작업 또는 운반 포즈
+- 사람 2항목: Cleanroom operator, Utility worker
+- 물류: FOUP, cart, buffer rack, OHT 차량·직선 레일·곡선 레일·지지 구조
+- 공간: Cleanroom cutaway, floor tile, wall, FFU, utility pad
+- 연결: 직선 배관, elbow, duct, 관계 화살표
 
-| 분류 | 수 | 구성 |
-| --- | ---: | --- |
-| Manufacturing | 9 | Lithography, Etch, Deposition, Inspection, Testing, Wafer inspector, Wafer dicer, Metrology station, Microscope bench |
-| Utilities | 11 | HVAC, Chiller, UPW, Wastewater, Scrubber, Bulk gas, Gas cabinet, Chemical supply, Electrical, Control room, Inspection terminal |
-| Robots | 7 | AMR·Cobot·Humanoid 기본/작업 포즈와 SCARA |
-| People | 6 | Cleanroom operator, Utility worker, Operating, Wafer handling, Seated, Walking |
-| Logistics & OHT | 10 | FOUP, Cart, Rack, OHT vehicle·rail·support, Wafer, Cassette, Chip tray |
-| Space | 5 | Cleanroom, Utility pad, Floor tile, Wall, FFU |
-| Connections | 4 | Pipe, Elbow, Duct, Arrow |
-
-[HTML 카탈로그](../dist/FAB_Scene_Kit_Asset_Catalog_0.3.0.html)는 다운로드한 다음 브라우저에서 여세요. GitHub의 파일 화면에서는 HTML 소스가 표시됩니다.
+총 39개 라이브러리 항목이며 로봇의 포즈 변형을 포함한 수입니다.
 
 ## 현재 범위
 

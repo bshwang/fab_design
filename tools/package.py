@@ -21,6 +21,6 @@ manifest = {'package': package.name, 'bytes': package.stat().st_size,
             'sha256': hashlib.sha256(package.read_bytes()).hexdigest(), 'version': version,
             'assets': len(json.loads((source / 'data/library/index.json').read_text(encoding='utf-8'))['assets'])}
 (output / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
-files = [package, *sorted(output.glob('FAB_Scene_Kit_*.html'))]
+files = sorted(p for p in output.iterdir() if p.suffix in {'.zip','.html','.blend','.json'} and p.name!='manifest.json')
 (output / 'SHA256SUMS.txt').write_text(''.join(hashlib.sha256(p.read_bytes()).hexdigest() + '  ' + p.name + '\n' for p in files), encoding='utf-8')
 print(json.dumps(manifest, indent=2))

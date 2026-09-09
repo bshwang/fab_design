@@ -7,7 +7,7 @@ import bpy
 from mathutils import Vector, Matrix
 from . import geometry as g
 
-VERSION = '0.3.0'
+VERSION = '0.4.0'
 LIGHT = dict(navy='193747', mint='48BFA7', ice='DAE9E5', ivory='F0E8D7',
              gold='E6AD53', blue='6B93AB', white='FCF8EF', steel='A0B4B7',
              joint='C4D4D2', pad='DFE2D9', foup='B29256', display='325D70',
@@ -16,6 +16,7 @@ LIGHT = dict(navy='193747', mint='48BFA7', ice='DAE9E5', ivory='F0E8D7',
 DARK = dict(LIGHT, ground='121E2B', floor='263D4B', pad='34515D',
             navy='152D3D', label='DBEDE8', joint='52717A')
 _index_cache = {}
+library_errors = []
 
 
 def data_dir():
@@ -28,10 +29,32 @@ def catalog():
     path = data_dir() / 'library/index.json'
     if not path.is_file():
         raise FileNotFoundError('Asset library missing. Choose the data folder in FAB Kit preferences.')
-    key = (str(path), path.stat().st_mtime_ns)
+    addon = bpy.context.preferences.addons.get(__package__)
+    local = addon.preferences.local_library_path if addon else ''
+    extra = Path(bpy.path.abspath(local)).resolve() / 'index.json' if local else None
+    key = (str(path), path.stat().st_mtime_ns, str(extra), extra.stat().st_mtime_ns if extra and extra.is_file() else None)
     if key not in _index_cache:
         _index_cache.clear()
-        _index_cache[key] = json.loads(path.read_text(encoding='utf-8'))['assets']
+        library_errors.clear()
+        assets = json.loads(path.read_text(encoding='utf-8'))['assets']
+        assets = {aid:dict(item,_library_root=str(path.parent)) for aid,item in assets.items()}
+        if extra and extra.is_file():
+            try:
+                local_assets=json.loads(extra.read_text(encoding='utf-8'))['assets']
+                if not isinstance(local_assets,dict):
+                    raise ValueError('Invalid asset index')
+                for aid,item in local_assets.items():
+                    if not aid.startswith('local.') or aid in assets:
+                        raise ValueError('Local assets need unique local.* IDs')
+                    if not isinstance(item,dict) or not all(k in item for k in ('name','category','file','collection','size','version')):
+                        raise ValueError('Incomplete local asset metadata')
+                    asset_path=(extra.parent/item['file']).resolve()
+                    if not asset_path.is_relative_to(extra.parent) or not asset_path.is_file() or asset_path.suffix!='.blend':
+                        raise ValueError('Local asset file is missing or outside its library')
+                assets.update({aid:dict(item,_library_root=str(extra.parent)) for aid,item in local_assets.items()})
+            except (OSError,ValueError,KeyError,TypeError) as exc:
+                library_errors.append('Local library: '+str(exc))
+        _index_cache[key] = assets
     return _index_cache[key]
 
 
@@ -77,6 +100,7 @@ def local_materials(scene, col, highlight=False):
 
 def copy_collection(source):
     dest = bpy.data.collections.new(source.name)
+    dest.instance_offset = source.instance_offset
     for key in source.keys():
         dest[key] = source[key]
     mapping = {}
@@ -102,8 +126,9 @@ def master(scene, asset_id, highlight=False):
                 and bool(col.get('fab_highlight')) == highlight
                 and col.get('fab_version') == item.get('version')):
             return col
-    path = (data_dir() / 'library' / item['file']).resolve()
-    if not path.is_relative_to((data_dir() / 'library').resolve()):
+    library = Path(item['_library_root'])
+    path = (library / item['file']).resolve()
+    if not path.is_relative_to(library):
         raise ValueError('Invalid asset path')
     if bpy.data.filepath and Path(bpy.data.filepath).resolve()==path:
         source=bpy.data.collections.get(item['collection'])

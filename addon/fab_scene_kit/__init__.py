@@ -6,9 +6,9 @@ import bpy
 from bpy.app.handlers import persistent
 from bpy.props import (BoolProperty, EnumProperty, FloatProperty, FloatVectorProperty,
                        IntProperty, PointerProperty, StringProperty)
-from . import core
+from . import core, author
 
-bl_info = {'name':'FAB Scene Kit','author':'FAB Scene Kit','version':(0,3,0),
+bl_info = {'name':'FAB Scene Kit','author':'FAB Scene Kit','version':(0,4,0),
            'blender':(4,3,0),'location':'3D View > Sidebar > FAB Kit',
            'description':'Offline isometric FAB assembly','category':'3D View'}
 _enum_items=[]
@@ -76,9 +76,12 @@ class FABPreferences(bpy.types.AddonPreferences):
     bl_idname=__package__
     library_path:StringProperty(name='Data folder (optional override)',subtype='DIR_PATH',
                                 description='Folder containing library and templates; empty uses bundled data')
+    local_library_path:StringProperty(name='Local Asset Library',subtype='DIR_PATH',
+                                description='Additional authored assets; separate from the installed add-on')
     def draw(self,context):
         self.layout.label(text='Works offline. Bundled assets are used by default.')
         self.layout.prop(self,'library_path')
+        self.layout.prop(self,'local_library_path')
         self.layout.operator('fab.action',text='Register Asset Browser library',icon='ASSET_MANAGER').action='REGISTER_LIBRARY'
 
 
@@ -776,6 +779,7 @@ def register():
         bpy.utils.register_class(cls)
     bpy.types.Scene.fab=PointerProperty(type=FABSettings)
     bpy.types.Object.fab=PointerProperty(type=FABInstance)
+    author.register()
     bpy.app.handlers.load_post.append(load_post)
     bpy.app.handlers.render_complete.append(render_complete)
     bpy.app.handlers.render_cancel.append(render_cancel)
@@ -784,6 +788,7 @@ def register():
 
 
 def unregister():
+    author.unregister()
     if bpy.app.timers.is_registered(migrate_pending):
         bpy.app.timers.unregister(migrate_pending)
     for handlers,callback in [(bpy.app.handlers.render_complete,render_complete),(bpy.app.handlers.render_cancel,render_cancel)]:

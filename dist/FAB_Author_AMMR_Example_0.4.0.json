@@ -1,0 +1,1725 @@
+{
+  "schema": "fab.asset-brief",
+  "schema_version": 1,
+  "id": "asset_demo_ammr",
+  "name": "Mobile Manipulator",
+  "type": "AMMR",
+  "units": "m",
+  "coordinates": {
+    "up": "+Z",
+    "front": "-Y",
+    "rotations": "XYZ degrees",
+    "part_transforms": "asset_absolute"
+  },
+  "style": {
+    "profile": "fab_scene_kit",
+    "theme": "LIGHT"
+  },
+  "features": "Compact four-wheel base; rear-mounted articulated arm; front-facing parallel gripper. Synthetic example, not a company model.",
+  "omit": "Small fasteners and hidden internals",
+  "parts": [
+    {
+      "id": "base",
+      "name": "Drive chassis",
+      "role": "BASE",
+      "parent": "",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        0,
+        0,
+        0.21000000000000002
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        1.18,
+        0.86,
+        0.26
+      ],
+      "material": "navy",
+      "bevel": 0.13,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "cover",
+      "name": "Main cover",
+      "role": "HOUSING",
+      "parent": "",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        0,
+        0,
+        0.41
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        1.1,
+        0.8,
+        0.13
+      ],
+      "material": "ice",
+      "bevel": 0.12,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "shoulder_mount",
+      "name": "Arm mount",
+      "role": "BASE",
+      "parent": "",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "CYLINDER",
+      "position": [
+        0.12,
+        0.18,
+        0.57
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.34,
+        0.34,
+        0.2
+      ],
+      "material": "steel",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "shoulder",
+      "name": "Shoulder joint",
+      "role": "JOINT",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "CYLINDER",
+      "position": [
+        0.12,
+        0.18,
+        0.7999999999999999
+      ],
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        0.27,
+        0.27,
+        0.23
+      ],
+      "material": "navy",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": true,
+        "center": [
+          0.12,
+          0.18,
+          0.7999999999999999
+        ],
+        "axis": [
+          0,
+          1,
+          0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "upper_link",
+      "name": "Upper arm",
+      "role": "LINK",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "TAPER",
+      "position": [
+        0.11999999731779099,
+        0.25,
+        1.070000033378601
+      ],
+      "rotation": [
+        14.534451308490373,
+        -1.2570583109749362e-06,
+        -179.999991348578
+      ],
+      "size": [
+        0.2,
+        0.23,
+        0.5578530409049216
+      ],
+      "material": "ice",
+      "bevel": 0.12,
+      "taper": 0.78,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "elbow",
+      "name": "Elbow joint",
+      "role": "JOINT",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "CYLINDER",
+      "position": [
+        0.12,
+        0.32,
+        1.34
+      ],
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        0.25,
+        0.25,
+        0.24
+      ],
+      "material": "navy",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": true,
+        "center": [
+          0.12,
+          0.32,
+          1.34
+        ],
+        "axis": [
+          0,
+          1,
+          0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "forearm",
+      "name": "Forearm",
+      "role": "LINK",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "TAPER",
+      "position": [
+        0.11999999731779099,
+        0.059999994933605194,
+        1.4849999952316284
+      ],
+      "rotation": [
+        60.8519311648278,
+        -0.0,
+        0.0
+      ],
+      "size": [
+        0.17,
+        0.2,
+        0.5953989972330682
+      ],
+      "material": "ice",
+      "bevel": 0.12,
+      "taper": 0.78,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "wrist",
+      "name": "Wrist",
+      "role": "JOINT",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "CYLINDER",
+      "position": [
+        0.12,
+        -0.2,
+        1.63
+      ],
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        0.18,
+        0.18,
+        0.17
+      ],
+      "material": "navy",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "tool",
+      "name": "Parallel gripper",
+      "role": "TOOL",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        0.12,
+        -0.32,
+        1.49
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.26,
+        0.15,
+        0.14
+      ],
+      "material": "steel",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "wheel_n1_n1",
+      "name": "Drive wheel",
+      "role": "WHEEL",
+      "parent": "",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "CYLINDER",
+      "position": [
+        -0.585,
+        -0.255,
+        0.15000000000000002
+      ],
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        0.3,
+        0.3,
+        0.09
+      ],
+      "material": "navy",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "wheel_n1_1",
+      "name": "Drive wheel",
+      "role": "WHEEL",
+      "parent": "",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "CYLINDER",
+      "position": [
+        -0.585,
+        0.255,
+        0.15000000000000002
+      ],
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        0.3,
+        0.3,
+        0.09
+      ],
+      "material": "navy",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "wheel_1_n1",
+      "name": "Drive wheel",
+      "role": "WHEEL",
+      "parent": "",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "CYLINDER",
+      "position": [
+        0.585,
+        -0.255,
+        0.15000000000000002
+      ],
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        0.3,
+        0.3,
+        0.09
+      ],
+      "material": "navy",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "wheel_1_1",
+      "name": "Drive wheel",
+      "role": "WHEEL",
+      "parent": "",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "CYLINDER",
+      "position": [
+        0.585,
+        0.255,
+        0.15000000000000002
+      ],
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        0.3,
+        0.3,
+        0.09
+      ],
+      "material": "navy",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "bumper",
+      "name": "Perimeter bumper",
+      "role": "PANEL",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        0,
+        0,
+        0.13
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        1.23,
+        0.9,
+        0.08
+      ],
+      "material": "navy",
+      "bevel": 0.13,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "accent",
+      "name": "Deck accent",
+      "role": "PANEL",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        0,
+        0,
+        0.46699999999999997
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        1.085,
+        0.79,
+        0.025
+      ],
+      "material": "mint",
+      "bevel": 0.1,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "deck",
+      "name": "Payload deck",
+      "role": "PANEL",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        -0.24,
+        -0.12,
+        0.495
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.48,
+        0.44,
+        0.03
+      ],
+      "material": "ice",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "lidar",
+      "name": "Front scanner",
+      "role": "SENSOR",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "CYLINDER",
+      "position": [
+        0,
+        -0.455,
+        0.255
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.14,
+        0.14,
+        0.12
+      ],
+      "material": "navy",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "lidar_lens",
+      "name": "Scanner lens",
+      "role": "SENSOR",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "CYLINDER",
+      "position": [
+        0,
+        -0.455,
+        0.27999999999999997
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.145,
+        0.145,
+        0.035
+      ],
+      "material": "blue",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "front_io",
+      "name": "Front IO panel",
+      "role": "PANEL",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        0.29,
+        -0.435,
+        0.3
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.22,
+        0.024,
+        0.095
+      ],
+      "material": "steel",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "status",
+      "name": "Status strip",
+      "role": "DISPLAY",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        -0.28,
+        -0.437,
+        0.32
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.28,
+        0.018,
+        0.025
+      ],
+      "material": "mint",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "estop",
+      "name": "Emergency stop",
+      "role": "SENSOR",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "CYLINDER",
+      "position": [
+        0.4,
+        -0.28,
+        0.497
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.047,
+        0.047,
+        0.025
+      ],
+      "material": "red",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "hub_n1_n1",
+      "name": "Wheel hub",
+      "role": "WHEEL",
+      "parent": "",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "CYLINDER",
+      "position": [
+        -0.636,
+        -0.255,
+        0.15000000000000002
+      ],
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        0.15,
+        0.15,
+        0.013
+      ],
+      "material": "steel",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "hub_n1_1",
+      "name": "Wheel hub",
+      "role": "WHEEL",
+      "parent": "",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "CYLINDER",
+      "position": [
+        -0.636,
+        0.255,
+        0.15000000000000002
+      ],
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        0.15,
+        0.15,
+        0.013
+      ],
+      "material": "steel",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "finger_n1",
+      "name": "Gripper finger",
+      "role": "TOOL",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        0.03499999999999999,
+        -0.32,
+        1.3599999999999999
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.045,
+        0.12,
+        0.18
+      ],
+      "material": "navy",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "fingertip_n1",
+      "name": "Gripper fingertip",
+      "role": "TOOL",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        0.065,
+        -0.32,
+        1.28
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.075,
+        0.1,
+        0.035
+      ],
+      "material": "steel",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "hub_1_n1",
+      "name": "Wheel hub",
+      "role": "WHEEL",
+      "parent": "",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "CYLINDER",
+      "position": [
+        0.636,
+        -0.255,
+        0.15000000000000002
+      ],
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        0.15,
+        0.15,
+        0.013
+      ],
+      "material": "steel",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "hub_1_1",
+      "name": "Wheel hub",
+      "role": "WHEEL",
+      "parent": "",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "CYLINDER",
+      "position": [
+        0.636,
+        0.255,
+        0.15000000000000002
+      ],
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        0.15,
+        0.15,
+        0.013
+      ],
+      "material": "steel",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "finger_1",
+      "name": "Gripper finger",
+      "role": "TOOL",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        0.20500000000000002,
+        -0.32,
+        1.3599999999999999
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.045,
+        0.12,
+        0.18
+      ],
+      "material": "navy",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "fingertip_1",
+      "name": "Gripper fingertip",
+      "role": "TOOL",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        0.175,
+        -0.32,
+        1.28
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.075,
+        0.1,
+        0.035
+      ],
+      "material": "steel",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "joint_cap",
+      "name": "Shoulder cover",
+      "role": "PANEL",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "CYLINDER",
+      "position": [
+        0.12,
+        0.052,
+        0.7999999999999999
+      ],
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        0.19,
+        0.19,
+        0.018
+      ],
+      "material": "mint",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "elbow_cap",
+      "name": "Elbow cover",
+      "role": "PANEL",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "CYLINDER",
+      "position": [
+        0.12,
+        0.19,
+        1.34
+      ],
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        0.16,
+        0.16,
+        0.018
+      ],
+      "material": "navy",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "cable",
+      "name": "Service cable",
+      "role": "PIPE",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "PATH",
+      "position": [
+        0,
+        0,
+        -0.02
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        1,
+        1,
+        1
+      ],
+      "material": "blue",
+      "bevel": 0.025,
+      "taper": 0.8,
+      "radius": 0.014,
+      "points": [
+        [
+          0.245,
+          0.2,
+          0.66
+        ],
+        [
+          0.245,
+          0.27,
+          1.04
+        ],
+        [
+          0.24,
+          0.39,
+          1.32
+        ],
+        [
+          0.23,
+          0.32,
+          1.47
+        ],
+        [
+          0.23,
+          0.0,
+          1.62
+        ],
+        [
+          0.22,
+          -0.2,
+          1.6
+        ]
+      ],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "vent_0",
+      "name": "Side vent",
+      "role": "VENT",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        0.557,
+        0.06,
+        0.38
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.012,
+        0.02,
+        0.055
+      ],
+      "material": "navy",
+      "bevel": 0.08,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "vent_1",
+      "name": "Side vent",
+      "role": "VENT",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        0.557,
+        0.1,
+        0.38
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.012,
+        0.02,
+        0.055
+      ],
+      "material": "navy",
+      "bevel": 0.08,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "vent_2",
+      "name": "Side vent",
+      "role": "VENT",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        0.557,
+        0.14,
+        0.38
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.012,
+        0.02,
+        0.055
+      ],
+      "material": "navy",
+      "bevel": 0.08,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "vent_3",
+      "name": "Side vent",
+      "role": "VENT",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        0.557,
+        0.18,
+        0.38
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.012,
+        0.02,
+        0.055
+      ],
+      "material": "navy",
+      "bevel": 0.08,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "vent_4",
+      "name": "Side vent",
+      "role": "VENT",
+      "parent": "base",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        0.557,
+        0.22,
+        0.38
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.012,
+        0.02,
+        0.055
+      ],
+      "material": "navy",
+      "bevel": 0.08,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    },
+    {
+      "id": "top_skin",
+      "name": "Top cover skin",
+      "role": "HOUSING",
+      "parent": "",
+      "enabled": true,
+      "configured": true,
+      "source": "manual",
+      "shape": "BOX",
+      "position": [
+        0,
+        0,
+        0.48
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        1.05,
+        0.755,
+        0.015
+      ],
+      "material": "ice",
+      "bevel": 0.12,
+      "taper": 0.8,
+      "radius": 0.025,
+      "points": [],
+      "joint": {
+        "enabled": false,
+        "center": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "notes": ""
+    }
+  ]
+}

@@ -4,6 +4,16 @@ Blender에서 일관된 스타일의 반도체 FAB 인포그래픽을 조립하�
 
 **현재 버전: 0.4.1 · 검증 환경: Blender 4.3.0 · 기본 52개 에셋 · 3개 템플릿 + 로컬 에셋 작성**
 
+## Guided Brief 마법사 설계
+
+AMMR의 대상 지정 → 구성 설명 → 주요 부품 연결 → 측정·관계 → 1000자 검토 흐름을 설계했습니다. **설계 검토용이며 0.4.1 애드온에 구현된 기능은 아닙니다.**
+
+- [마법사 상세 설계](docs/design/AUTHOR_WIZARD_DESIGN_v1_KO.md)
+- [화면 데모 HTML 다운로드](https://github.com/bshwang/fab_design/raw/refs/heads/main/docs/design/author-wizard-v1.html) — 다운로드 후 브라우저에서 열기
+- [하이라키 추출 스크립트 사용법](docs/HIERARCHY_EXPORT_KO.md)
+
+데모는 독립적으로 만든 범용 예제 hierarchy를 사용하며, 실제 Blender 연결이나 CAD 측정을 수행하지 않습니다. 상태·문자열 생성 로직 23개 검사 결과는 [검증 보고서](docs/design/validation.json)에 있습니다.
+
 ![FAB Example — Light](docs/images/fab-light.jpg)
 
 ## 다운로드와 설치

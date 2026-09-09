@@ -1,0 +1,184 @@
+<div id="ammr-author-v1" aria-label="FAB Author AMMR wizard design">
+  <style>
+    #ammr-author-v1{--aw-bg:light-dark(#e8e8e8,#282828);--aw-panel:light-dark(#f6f6f6,#333333);--aw-field:light-dark(#ffffff,#454545);--aw-text:light-dark(#202328,#eeeeee);--aw-muted:light-dark(#545b64,#bfc3c9);--aw-border:light-dark(#b9bec5,#575b61);--aw-accent:light-dark(#246699,#83bfea);--aw-selected:light-dark(#d6e8f7,#254660);--aw-warning:light-dark(#795000,#f2ca81);--aw-geometry:light-dark(#b9cfc9,#7b9b93);--aw-error:light-dark(#a12424,#ffaaaa);font:400 14px/1.5 'Segoe UI',sans-serif;color:var(--aw-text)}
+    #ammr-author-v1 *{box-sizing:border-box}#ammr-author-v1 [hidden]{display:none!important}
+    #ammr-author-v1 .aw-window{background:var(--aw-bg);border:1px solid var(--aw-border);border-radius:8px;overflow:clip}
+    #ammr-author-v1 .aw-chrome{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--aw-border)}
+    #ammr-author-v1 .aw-chrome strong{font-weight:500}#ammr-author-v1 .aw-prototype{margin-left:auto;color:var(--aw-muted);font-size:12px}
+    #ammr-author-v1 .aw-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,var(--aw-width,370px))}
+    #ammr-author-v1 .aw-context{padding:18px;min-width:0}#ammr-author-v1 .aw-panel{background:var(--aw-panel);padding:16px;border-left:1px solid var(--aw-border);min-width:0}
+    #ammr-author-v1 .aw-steps{display:flex;flex-wrap:wrap;gap:4px;padding-bottom:14px}#ammr-author-v1 .aw-steps button{padding:5px 9px}
+    #ammr-author-v1 button,#ammr-author-v1 input,#ammr-author-v1 select,#ammr-author-v1 textarea{font:inherit;color:var(--aw-text)}
+    #ammr-author-v1 button{background:var(--aw-field);border:1px solid var(--aw-border);border-radius:4px;padding:7px 10px;cursor:pointer;white-space:normal;text-align:center}
+    #ammr-author-v1 button[aria-pressed=true],#ammr-author-v1 .aw-primary{background:var(--aw-selected);border-color:var(--aw-accent)}
+    #ammr-author-v1 button:disabled{opacity:.5;cursor:default}#ammr-author-v1 input:not([type=checkbox]),#ammr-author-v1 select,#ammr-author-v1 textarea{width:100%;min-width:0;background:var(--aw-field);border:1px solid var(--aw-border);border-radius:4px;padding:7px}
+    #ammr-author-v1 textarea{resize:vertical;min-height:68px}#ammr-author-v1 .aw-label{display:block;margin:10px 0}#ammr-author-v1 .aw-label>span{display:block;margin-bottom:4px}
+    #ammr-author-v1 .aw-check{display:flex;align-items:flex-start;gap:8px;margin:8px 0}#ammr-author-v1 .aw-check input{margin-top:5px;accent-color:var(--aw-accent)}
+    #ammr-author-v1 .aw-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}#ammr-author-v1 .aw-row>*{flex:1;min-width:0}
+    #ammr-author-v1 .aw-hint,#ammr-author-v1 .aw-caption{font-size:12px;color:var(--aw-muted);margin:7px 0;overflow-wrap:anywhere}
+    #ammr-author-v1 .aw-hint{display:none}#ammr-author-v1.aw-help .aw-hint{display:block}
+    #ammr-author-v1 h3{font-size:16px;font-weight:500;margin:0 0 12px}#ammr-author-v1 h4{font-size:14px;font-weight:500;margin:12px 0 6px}
+    #ammr-author-v1 .aw-rule{border-top:1px solid var(--aw-border);margin-top:14px;padding-top:12px}
+    #ammr-author-v1 .aw-warning{color:var(--aw-warning)}#ammr-author-v1 .aw-error{color:var(--aw-error)}
+    #ammr-author-v1 .aw-source{padding:8px 0;border-bottom:1px solid var(--aw-border);overflow-wrap:anywhere}
+    #ammr-author-v1 .aw-source code{font-size:12px}#ammr-author-v1 .aw-root-state{float:right;color:var(--aw-muted);font-size:12px}
+    #ammr-author-v1 .aw-footer{display:flex;gap:8px;margin-top:18px;align-items:center}#ammr-author-v1 .aw-footer .aw-primary{margin-left:auto}
+    #ammr-author-v1 .aw-visual{width:100%;height:auto;display:block;margin:12px 0;color:var(--aw-accent)}
+    #ammr-author-v1 .aw-key{display:flex;flex-wrap:wrap;gap:6px}#ammr-author-v1 .aw-key button{font-size:12px}
+    #ammr-author-v1 .aw-status{min-height:24px;margin-top:8px;font-size:12px;overflow-wrap:anywhere}
+    #ammr-author-v1 .aw-meter{display:flex;justify-content:space-between;gap:8px;margin:8px 0;font-variant-numeric:tabular-nums}
+    #ammr-author-v1 .aw-brief{font-family:Consolas,monospace;font-size:12px;min-height:200px;overflow-wrap:anywhere}
+    #ammr-author-v1 ul{margin:6px 0;padding-left:20px}#ammr-author-v1 details{margin-top:12px}#ammr-author-v1 summary{cursor:pointer}
+    @media(max-width:780px){#ammr-author-v1 .aw-layout{grid-template-columns:1fr}#ammr-author-v1 .aw-panel{border-left:0;border-top:1px solid var(--aw-border)}#ammr-author-v1 .aw-context{padding:12px}#ammr-author-v1 .aw-visual{max-width:350px;margin:6px auto}#ammr-author-v1 .aw-prototype{margin-left:0}}
+    @media(pointer:coarse){#ammr-author-v1 button,#ammr-author-v1 select{min-height:44px}#ammr-author-v1 input,#ammr-author-v1 textarea{font-size:16px}}
+  </style>
+  <div class="aw-window">
+    <div class="aw-chrome"><strong>FAB Author</strong><span>Guided Brief / AMMR</span><span class="aw-prototype">Design prototype · no Blender connection</span></div>
+    <div class="aw-layout">
+      <aside class="aw-context" aria-label="Synthetic example source model">
+        <h3>Source context</h3>
+        <div id="aw-illustration"></div>
+        <div class="aw-caption">Synthetic example only. Positions and shapes are illustrative.</div>
+        <div class="aw-key" id="aw-part-keys"></div>
+        <div class="aw-rule">
+          <div class="aw-source"><span class="aw-root-state" id="aw-root-arm"></span><code>RobotRoot → RobotRig</code><div class="aw-caption">Arm meshes, references and workspace guide</div></div>
+          <div class="aw-source"><span class="aw-root-state" id="aw-root-base"></span><code>MobileBase</code><div class="aw-caption">Base mesh + spare tool shelf</div></div>
+          <div class="aw-source"><span class="aw-root-state" id="aw-root-handler"></span><code>FixtureStage</code><div class="aw-caption">Fixture / carriage components; role unconfirmed</div></div>
+        </div>
+        <div class="aw-caption" id="aw-context-count" aria-live="polite"></div>
+      </aside>
+      <section class="aw-panel" aria-label="AMMR wizard questions">
+        <nav class="aw-steps" id="aw-navigation" aria-label="Wizard steps"></nav>
+        <div id="aw-screen"></div>
+        <div class="aw-footer"><button type="button" id="aw-back">Back</button><button type="button" class="aw-primary" id="aw-next">Next</button></div>
+        <div class="aw-status" id="aw-status" role="status" aria-live="polite"></div>
+      </section>
+    </div>
+  </div>
+  <script>
+  // Pure design model: exercised separately without a browser or Blender.
+  globalThis.AWDesign = (() => {
+    const rows = [["r", "", "RobotRoot", "EMPTY"], ["rig", "r", "RobotRig", "ARMATURE"], ["workspace", "rig", "WorkspaceGuide", "MESH"], ["shoulder", "rig", "ShoulderMesh", "MESH"], ["upper", "rig", "UpperArmMesh", "MESH"], ["lower", "rig", "ForearmMesh", "MESH"], ["tip", "lower", "ToolReference", "EMPTY"], ["b", "", "MobileBase", "MESH"], ["tb", "b", "ToolShelf", "EMPTY"], ["bgb", "tb", "SpareTool", "MESH"], ["tray", "tb", "ShelfTray", "MESH"], ["h", "", "FixtureStage", "MESH"], ["carriage", "h", "CarriageMesh", "MESH"], ["holder", "carriage", "ContainerHolder", "MESH"], ["center", "holder", "FixtureReference", "EMPTY"]];
+    const nodes=rows.map(([id,parent,name,type])=>({id,parent,name,type}));
+    const node=id=>nodes.find(n=>n.id===id);
+    function descendants(id){return [id,...nodes.filter(n=>n.parent===id).flatMap(n=>descendants(n.id))];}
+    function initial(){return {step:0,roots:['r','b','h'],helper:'pending',confirmed:false,revision:0,purpose:'실험실 용기 이송 및 교체',outline:'L-shaped',opening:'베이스 안쪽 작업 공간',arms:'1',armData:{arm1:{kind:'Articulated',axes:'6'}},handler:true,tools:false,features:'열린 베이스, 팔과 이송부의 상대 배치',motion:'Independent',sequence:'홀더 → 로봇 팔 → 작업 설비',bindings:{},source:'b',mode:'self',active:'base',includeHierarchy:false,includeDemo:false,demoRevision:null,front:'Unconfirmed',unit:'Unconfirmed'};}
+    function included(s){const ids=new Set(s.roots.flatMap(descendants));if(s.helper==='exclude')ids.delete('workspace');return [...ids].filter(id=>node(id).type==='MESH');}
+    function candidates(s,id,mode){const allowed=new Set(included(s));return (mode==='branch'?descendants(id):[id]).filter(x=>allowed.has(x));}
+    function parts(s){const result=[{id:'base',name:'Mobile base'}];if(s.arms!=='Unknown')for(let i=1;i<=Number(s.arms);i++)result.push({id:'arm'+i,name:'Arm '+i});if(s.handler)result.push({id:'handler',name:'Bottle handler'});if(s.tools)result.push({id:'tools',name:'Tool storage'});return result;}
+    function blockers(s){const e=[];if(!s.roots.length)e.push('Add at least one source group.');if(s.roots.includes('r')&&s.helper==='pending')e.push('Review Workspace: Keep or Exclude.');if(!s.confirmed)e.push('Confirm the included source scope.');if(!s.purpose.trim())e.push('Describe the equipment purpose.');if(s.includeDemo&&s.demoRevision!==s.revision)e.push('Example measurements need refresh, or turn them off.');return e;}
+    function changeScope(s){s.revision++;s.confirmed=false;}
+    function assign(s,part,id,mode){const mesh=candidates(s,id,mode);if(!mesh.length)return 'No included mesh in this selection. Try Include Children or Describe Only.';const other=parts(s).filter(p=>p.id!==part).flatMap(p=>s.bindings[p.id]?.mesh||[]);if(mesh.some(x=>other.includes(x)))return 'Meshes overlap another part. Use a smaller selection or Describe Only.';s.bindings[part]={source:id,mode,mesh,revision:s.revision};return null;}
+    function text(s){const quote=JSON.stringify;const data=['AW1-PREVIEW','type=AMMR','purpose='+quote(s.purpose.trim()),'overall=unmeasured','frame='+s.front,'base='+s.outline];if(s.opening&&['L-shaped','U-shaped','Other'].includes(s.outline))data.push('opening='+quote(s.opening));data.push('arms='+s.arms);if(s.arms!=='Unknown')for(let i=1;i<=Number(s.arms);i++){const a=s.armData['arm'+i]||{kind:'Unknown',axes:'Unknown'};data.push('arm'+i+'='+a.kind+','+a.axes+' axes');}if(s.handler){data.push('handler=Cartesian bottle holder,axes unknown','vertical_relation='+s.motion);}if(s.tools)data.push('tool_storage=yes');if(s.sequence)data.push('sequence='+quote(s.sequence));if(s.features)data.push('keep='+quote(s.features));data.push('mounting=unknown');if(s.includeHierarchy)data.push('source_roots='+quote(s.roots.map(x=>node(x).name)),'workspace='+s.helper);if(s.includeDemo)data.push('ILLUSTRATIVE_ONLY_size_m=1.80,1.20,1.90');return data.join(';');}
+    function ready(s){return blockers(s).length===0&&text(s).length<=1000;}
+    return {nodes,node,descendants,initial,included,candidates,parts,blockers,changeScope,assign,text,ready};
+  })();
+  </script>
+  <script>
+  (()=>{
+    const root=document.getElementById('ammr-author-v1'),M=globalThis.AWDesign,s=M.initial();
+    const design={hints:true,width:370};
+    const steps=['Scope','Describe','Parts','Measure','Review'];
+    const q=id=>root.querySelector('#'+id);
+    const escape=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const options=(values,selected)=>values.map(v=>`<option value="${escape(v)}" ${v===selected?'selected':''}>${escape(v)}</option>`).join('');
+    const field=(id,label,values,value)=>`<label class="aw-label"><span>${label}</span><select id="${id}">${options(values,value)}</select></label>`;
+    const check=(id,label,on)=>`<label class="aw-check"><input type="checkbox" id="${id}" ${on?'checked':''}><span>${label}</span></label>`;
+    const note=text=>`<div class="aw-hint">${text}</div>`;
+    function status(message){q('aw-status').textContent=message;}
+    function renderContext(){
+      const opacity=id=>s.roots.includes(id)?1:.2;
+      const helper=s.roots.includes('r')&&s.helper!=='exclude';
+      const basePath=s.outline==='L-shaped'?'M58 65 H145 V219 H345 V283 H58 Z':s.outline==='U-shaped'?'M58 65 H128 V219 H275 V65 H345 V283 H58 Z':'M58 65 H345 V283 H58 Z';
+      const armCount=s.arms==='Unknown'?1:Number(s.arms);
+      const arms=Array.from({length:armCount},(_,i)=>`<g transform="translate(${i*27} ${i*10})" opacity="${opacity('r')}"><path d="M157 195 L180 138 L218 168 L245 115" fill="none" stroke="${s.active==='arm'+(i+1)?'var(--aw-accent)':'var(--aw-text)'}" stroke-width="12" stroke-linecap="round"/><circle cx="180" cy="138" r="9" fill="var(--aw-field)" stroke="var(--aw-text)" stroke-width="3"/><circle cx="218" cy="168" r="8" fill="var(--aw-field)" stroke="var(--aw-text)" stroke-width="3"/></g>`).join('');
+      q('aw-illustration').innerHTML=`<svg class="aw-visual" viewBox="0 0 400 320" role="img" aria-label="Illustrative top view: L-shaped mobile base, robot arm and bottle handler. This is not the source CAD."><path d="M20 300 H380 M30 25 V300" stroke="var(--aw-border)" fill="none"/><path d="${basePath}" fill="var(--aw-geometry)" opacity="${opacity('b')}" stroke="${s.active==='base'?'var(--aw-accent)':'var(--aw-border)'}" stroke-width="3"/>${helper?'<ellipse cx="220" cy="146" rx="155" ry="125" fill="var(--aw-selected)" fill-opacity=".45" stroke="var(--aw-warning)" stroke-width="2" stroke-dasharray="7 5"/>':''}${arms}${s.handler?`<g opacity="${opacity('h')}"><rect x="255" y="175" width="65" height="80" rx="6" fill="var(--aw-field)" stroke="${s.active==='handler'?'var(--aw-accent)':'var(--aw-text)'}" stroke-width="3"/><rect x="274" y="185" width="28" height="49" rx="7" fill="var(--aw-selected)" stroke="var(--aw-text)" stroke-width="2"/><rect x="281" y="178" width="14" height="9" fill="var(--aw-text)"/></g>`:''}</svg>`;
+      q('aw-part-keys').innerHTML=M.parts(s).map(p=>`<button type="button" data-part="${p.id}" aria-pressed="${s.active===p.id}">${p.name}</button>`).join('');
+      ['r','b','h'].forEach((id,i)=>q(['aw-root-arm','aw-root-base','aw-root-handler'][i]).textContent=s.roots.includes(id)?'Included':'Not included');
+      q('aw-context-count').textContent=`${M.included(s).length} mesh objects in scope · Workspace ${s.helper==='exclude'?'excluded':s.helper==='keep'?'kept':'needs review'} · No geometry measured`;
+    }
+    function render(){
+      root.classList.toggle('aw-help',design.hints);root.style.setProperty('--aw-width',design.width+'px');
+      q('aw-navigation').innerHTML=steps.map((name,i)=>`<button type="button" data-step="${i}" aria-pressed="${s.step===i}" ${s.step===i?'aria-current="step"':''}>${i+1}</button>`).join('');
+      q('aw-navigation').querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-label',`${i+1}. ${steps[i]}`));
+      if(!M.parts(s).some(p=>p.id===s.active))s.active='base';
+      let body=`<h3>${s.step+1} / 5 · ${steps[s.step]}</h3>`;
+      if(s.step===0){
+        body+=note('Example source selection. In Blender, add your selected objects or Collections here.');
+        body+=check('aw-scope-r','RobotRoot + children',s.roots.includes('r'))+check('aw-scope-b','MobileBase + children',s.roots.includes('b'))+check('aw-scope-h','FixtureStage + children',s.roots.includes('h'));
+        if(s.roots.includes('r'))body+=`<div class="aw-rule"><h4>Review helper candidate</h4><div>WorkspaceGuide <span class="aw-caption">MESH</span></div>${note('Name suggests a workspace guide. Review it; do not exclude by object type alone.')}<div class="aw-row"><button type="button" data-helper="exclude" aria-pressed="${s.helper==='exclude'}">Exclude</button><button type="button" data-helper="keep" aria-pressed="${s.helper==='keep'}">Keep</button></div></div>`;
+        body+=`<div class="aw-rule"><button type="button" class="aw-primary" id="aw-confirm" ${!s.roots.length||(s.roots.includes('r')&&s.helper==='pending')?'disabled':''}>${s.confirmed?'Scope confirmed':'Confirm Scope'}</button>${note('Empty and Armature references stay available. Their display size does not count as geometry.')}</div>`;
+      }else if(s.step===1){
+        body+=`<label class="aw-label"><span>Purpose</span><textarea id="aw-purpose">${escape(s.purpose)}</textarea></label>`;
+        body+=field('aw-outline','Base outline',['Rectangular','L-shaped','U-shaped','Other','Unknown'],s.outline);
+        if(['L-shaped','U-shaped','Other'].includes(s.outline))body+=`<label class="aw-label"><span>Open area / distinctive outline</span><input id="aw-opening" value="${escape(s.opening)}"></label>`;
+        body+=field('aw-arms','Arm count',['1','2','3','4','Unknown'],s.arms);
+        if(s.arms!=='Unknown')for(let i=1;i<=Number(s.arms);i++){const a=s.armData['arm'+i]||{kind:'Unknown',axes:'Unknown'};body+=`<div class="aw-row">${field('aw-kind-'+i,'Arm '+i+' kind',['Articulated','SCARA','Other','Unknown'],a.kind)}${field('aw-axes-'+i,'Axes',['Unknown','4','5','6','7','8','Other'],a.axes)}</div>`;}
+        body+=check('aw-handler','Bottle holder / Cartesian handler',s.handler)+check('aw-tools','Tool storage',s.tools);
+        body+=`<label class="aw-label"><span>Must-keep features</span><textarea id="aw-features">${escape(s.features)}</textarea></label>`;
+      }else if(s.step===2){
+        body+=field('aw-active','Functional part',M.parts(s).map(p=>p.name),M.parts(s).find(p=>p.id===s.active).name);
+        const bound=s.bindings[s.active];
+        body+=`<div class="aw-caption">${bound?`${escape(M.node(bound.source).name)} · ${bound.mesh.length} mesh objects · ${bound.revision===s.revision?'assigned':'scope changed; reassign'}`:'Describe only · no source assigned'}</div>`;
+        body+=`<label class="aw-label"><span>Source picker (example hierarchy)</span><select id="aw-source">${M.nodes.map(n=>`<option value="${n.id}" ${s.source===n.id?'selected':''}>${escape(n.name)} [${n.type}]</option>`).join('')}</select></label>`;
+        body+=`<div class="aw-row"><button type="button" data-mode="self" aria-pressed="${s.mode==='self'}">Selected Only</button><button type="button" data-mode="branch" aria-pressed="${s.mode==='branch'}">Include Children</button></div>`;
+        body+=`<div class="aw-caption">${M.candidates(s,s.source,s.mode).length} included mesh objects in this selection</div><div class="aw-row"><button type="button" class="aw-primary" id="aw-assign" ${!s.confirmed?'disabled':''}>Assign Selection</button><button type="button" id="aw-describe-only">Describe Only</button></div>`;
+        body+=note('For the base mesh, Selected Only leaves child tools out. Excluded Workspace stays excluded when assigning the arm branch.');
+        body+=`<details><summary>Selected source children</summary><ul>${M.nodes.filter(n=>n.parent===s.source).map(n=>`<li>${escape(n.name)} [${n.type}]</li>`).join('')||'<li>No child objects</li>'}</ul></details>`;
+      }else if(s.step===3){
+        body+=`<div>Overall size: <strong>Unmeasured</strong></div>${note('Bindings locate source objects. Measurements require Blender geometry; none is available in this prototype.')}`;
+        body+=field('aw-front','Front direction',['Unconfirmed','-Y','+Y','-X','+X'],s.front)+field('aw-unit','Source units',['Unconfirmed','Meters','Millimeters'],s.unit);
+        body+=check('aw-demo','Include illustrative dimensions (demo only)',s.includeDemo);
+        if(s.includeDemo)body+=`<div class="aw-caption aw-warning">Example only: 1.80 × 1.20 × 1.90 m. Not this robot's dimensions.</div><button type="button" id="aw-demo-refresh">Refresh Example Values</button>`;
+        if(s.handler)body+=field('aw-motion','Arm / handler vertical travel',['Independent','Moves together','Unknown'],s.motion);
+        body+=`<label class="aw-label"><span>Work sequence</span><textarea id="aw-sequence">${escape(s.sequence)}</textarea></label>`;
+        body+=note('Independent motion does not determine the number of columns or the mounting structure. Those remain unknown.');
+      }else{
+        body+=check('aw-hierarchy','Include source root names (optional)',s.includeHierarchy);
+        body+=`<div class="aw-meter"><span>Complete outgoing text</span><strong id="aw-count"></strong></div><textarea class="aw-brief" id="aw-output" readonly aria-label="Exact outgoing brief"></textarea><div id="aw-issues" role="alert"></div><button type="button" class="aw-primary" id="aw-select-text">Select Brief Text</button>`;
+        body+=note('This is an AW1 design preview, not an importable FQ1 packet. Local bindings and the full hierarchy are not sent by default.');
+      }
+      q('aw-screen').innerHTML=body;
+      q('aw-back').disabled=s.step===0;q('aw-next').hidden=s.step===4;
+      renderContext();if(s.step===4)renderReview();
+    }
+    function renderReview(){const text=M.text(s),errors=M.blockers(s);if(text.length>1000)errors.push(`${text.length-1000} characters over limit. Shorten descriptions or remove optional root names.`);q('aw-output').value=text;q('aw-count').textContent=`${text.length} / 1000`;q('aw-count').className=text.length>1000?'aw-error':'';q('aw-issues').innerHTML=errors.length?`<ul class="aw-error">${errors.map(e=>`<li>${escape(e)}</li>`).join('')}</ul>`:'<div class="aw-caption">Within limit · missing dimensions are explicit</div>';q('aw-select-text').disabled=!M.ready(s);}
+    root.addEventListener('click',e=>{
+      const b=e.target.closest('button');if(!b||b.disabled)return;
+      status('');
+      if(b.dataset.step!==undefined)s.step=Number(b.dataset.step);
+      else if(b.dataset.part){s.active=b.dataset.part;if(s.step!==2)s.step=2;}
+      else if(b.dataset.helper){s.helper=b.dataset.helper;M.changeScope(s);}
+      else if(b.dataset.mode)s.mode=b.dataset.mode;
+      else if(b.id==='aw-back')s.step=Math.max(0,s.step-1);
+      else if(b.id==='aw-next')s.step=Math.min(4,s.step+1);
+      else if(b.id==='aw-confirm'){s.confirmed=true;status('Included source scope confirmed.');}
+      else if(b.id==='aw-assign'){const err=M.assign(s,s.active,s.source,s.mode);status(err||'Assigned. Original hierarchy stays unchanged.');}
+      else if(b.id==='aw-describe-only'){delete s.bindings[s.active];status('This part will be described without source measurements.');}
+      else if(b.id==='aw-demo-refresh'){s.demoRevision=s.revision;status('Illustrative values refreshed. Actual dimensions remain unmeasured.');}
+      else if(b.id==='aw-select-text'){q('aw-output').focus();q('aw-output').select();status('Text selected. Use Ctrl+C / Copy to copy it.');return;}
+      render();
+    });
+    root.addEventListener('input',e=>{const names={'aw-purpose':'purpose','aw-opening':'opening','aw-features':'features','aw-sequence':'sequence'};if(names[e.target.id])s[names[e.target.id]]=e.target.value;});
+    root.addEventListener('change',e=>{
+      const id=e.target.id,v=e.target.value;status('');
+      if(id.startsWith('aw-scope-')){const group=id.slice(-1);s.roots=e.target.checked?[...new Set([...s.roots,group])]:s.roots.filter(x=>x!==group);M.changeScope(s);}
+      else if(id==='aw-outline')s.outline=v;
+      else if(id==='aw-arms'){s.arms=v;for(let i=1;i<=Number(v);i++)s.armData['arm'+i]??={kind:'Unknown',axes:'Unknown'};}
+      else if(id.startsWith('aw-kind-')||id.startsWith('aw-axes-')){const arm='arm'+id.split('-').pop();s.armData[arm]??={kind:'Unknown',axes:'Unknown'};s.armData[arm][id.startsWith('aw-kind-')?'kind':'axes']=v;}
+      else if(id==='aw-handler')s.handler=e.target.checked;
+      else if(id==='aw-tools')s.tools=e.target.checked;
+      else if(id==='aw-active')s.active=M.parts(s).find(p=>p.name===v).id;
+      else if(id==='aw-source')s.source=v;
+      else if(id==='aw-front'||id==='aw-unit'){s[id==='aw-front'?'front':'unit']=v;s.revision++;}
+      else if(id==='aw-demo'){s.includeDemo=e.target.checked;if(s.includeDemo)s.demoRevision=s.revision;}
+      else if(id==='aw-motion')s.motion=v;
+      else if(id==='aw-hierarchy')s.includeHierarchy=e.target.checked;
+      else return;
+      render();
+    });
+    render();
+    if(globalThis.Tweak){const tweak=new Tweak({container:root,onChange:render});tweak.addToggle(design,'hints',{label:'Expanded field hints'});tweak.addSlider(design,'width',{label:'Sidebar width',min:320,max:440,step:10,unit:'px'});}
+  })();
+  </script>
+</div>

@@ -1,5 +1,12 @@
 # Changes
 
+## Unreleased — Guided Brief design
+
+- AMMR wizard design with explicit source scope, functional parts, optional measurements and a 1000-character brief review.
+- Interactive design prototype with an independent synthetic hierarchy; no Blender connection or actual geometry measurement.
+- Generic Blender script to export selected object hierarchies to a Text block and copy results only within the 1000-character limit.
+- 23 pure state/serialization checks. The installable add-on remains version 0.4.1.
+
 ## 0.4.1 — Quick Capture
 
 - Whole-model selection plus type/features instead of manual component assignment.
